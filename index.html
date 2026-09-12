@@ -384,7 +384,7 @@ var NAV_ITEMS = [
 ];
 
 var HERO_IMAGES = [
-  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/FullSizeRender.jpg?v=1789220388",
+  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/F5CA3F88-A1D0-411C-B597-C0E04A7D44C8.png?v=1789216047",
   "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/7FB9E416-41C8-4413-827A-9285944684B6.png?v=1789216046",
   "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/7FB9E416-41C8-4413-827A-9285944684B6.png?v=1789216046",
   "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/BA4B16E9-A350-4CE0-BB9F-EA053F76BEA6.png?v=1789216046"
@@ -884,30 +884,20 @@ function initHeroSlider(){
   document.getElementById("heroNext").onclick=function(){ next(); restart(); };
   document.getElementById("heroPrev").onclick=function(){ show(i-1); restart(); };
   dots.forEach(function(d){ d.onclick=function(){ show(parseInt(d.dataset.i,10)); restart(); }; });
-  // FIX: only pause-on-hover for real mouse/pointer devices. On touch
-  // devices, "mouseenter" fires on tap but "mouseleave" often never
-  // fires, which used to freeze the slideshow permanently after the
-  // first tap. We now gate this behind a hover-capability check, and
-  // also explicitly resume the timer after any touch interaction.
-  var heroEl = document.getElementById("heroSection");
-  if(matchMedia('(hover: hover)').matches){
-    heroEl.addEventListener("mouseenter", function(){ clearInterval(timer); });
-    heroEl.addEventListener("mouseleave", restart);
-  }
+  document.getElementById("heroSection").addEventListener("mouseenter", function(){ clearInterval(timer); });
+  document.getElementById("heroSection").addEventListener("mouseleave", restart);
   document.getElementById("scrollExploreBtn").onclick = function(){
     var next = document.getElementById("heroSection").nextElementSibling;
     if(next) next.scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});
   };
   // touch swipe
   var startX=null;
-  hero=document.getElementById("heroSection");
-  hero.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; }, {passive:true});
+  var hero=document.getElementById("heroSection");
+  hero.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; });
   hero.addEventListener("touchend", function(e){
     if(startX===null) return;
     var dx = e.changedTouches[0].clientX - startX;
-    if(dx>40){ show(i-1); restart(); }
-    else if(dx<-40){ next(); restart(); }
-    else { restart(); } // plain tap: make sure autoplay keeps running
+    if(dx>40){ show(i-1); restart(); } else if(dx<-40){ next(); restart(); }
     startX=null;
   });
 }
