@@ -538,8 +538,7 @@ var PROGRAMMES = {
       "Separate passing is mandatory for both Semester End Examination and Internal Evaluation/Assessment.",
       "Total credits required for completing M.A. II: 44 credits."]}
 };
-
-var ABOUT_SUBPAGES = [
+  var ABOUT_SUBPAGES = [
  {id:"about-college",title:"About College"},
  {id:"about-sanstha",title:"About Sanstha"},
  {id:"vision-mission",title:"Vision & Mission"},
@@ -741,7 +740,6 @@ function render404(main){
     '<p style="margin-top:10px">The page you\'re looking for doesn\'t exist.</p>'+
     '<a href="#/home" class="btn" style="margin-top:20px">Back to Home</a></div>';
 }
-
 /* ============================================================
    NAV / HEADER / DRAWER
    ============================================================ */
@@ -809,7 +807,6 @@ function renderSearchResults(q){
     return '<a class="result-item" href="'+m.href+'"><span class="cat">'+esc(m.cat)+'</span><h4>'+esc(m.title)+'</h4><p>'+esc((m.excerpt||"").slice(0,110))+'</p></a>';
   }).join("");
 }
-
 /* ============================================================
    SCROLL REVEAL
    ============================================================ */
@@ -1138,8 +1135,7 @@ function initAccordions(){
     };
   });
 }
-
-/* ============================================================
+  /* ============================================================
    FACULTY
    ============================================================ */
 function renderFacultyRoute(parts, main){
@@ -1853,8 +1849,7 @@ function renderAdminForm(cfg, id, container){
     renderRoute();
   };
 }
-
-function togglePublish(entityKey, id){
+  function togglePublish(entityKey, id){
   var cfg = ENTITY_CONFIGS[entityKey];
   var item = DB[cfg.key].filter(function(x){return x.id===id;})[0];
   if(!item) return;
