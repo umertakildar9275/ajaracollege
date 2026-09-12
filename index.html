@@ -884,20 +884,30 @@ function initHeroSlider(){
   document.getElementById("heroNext").onclick=function(){ next(); restart(); };
   document.getElementById("heroPrev").onclick=function(){ show(i-1); restart(); };
   dots.forEach(function(d){ d.onclick=function(){ show(parseInt(d.dataset.i,10)); restart(); }; });
-  document.getElementById("heroSection").addEventListener("mouseenter", function(){ clearInterval(timer); });
-  document.getElementById("heroSection").addEventListener("mouseleave", restart);
+  // FIX: only pause-on-hover for real mouse/pointer devices. On touch
+  // devices, "mouseenter" fires on tap but "mouseleave" often never
+  // fires, which used to freeze the slideshow permanently after the
+  // first tap. We now gate this behind a hover-capability check, and
+  // also explicitly resume the timer after any touch interaction.
+  var heroEl = document.getElementById("heroSection");
+  if(matchMedia('(hover: hover)').matches){
+    heroEl.addEventListener("mouseenter", function(){ clearInterval(timer); });
+    heroEl.addEventListener("mouseleave", restart);
+  }
   document.getElementById("scrollExploreBtn").onclick = function(){
     var next = document.getElementById("heroSection").nextElementSibling;
     if(next) next.scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});
   };
   // touch swipe
   var startX=null;
-  var hero=document.getElementById("heroSection");
-  hero.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; });
+  hero=document.getElementById("heroSection");
+  hero.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; }, {passive:true});
   hero.addEventListener("touchend", function(e){
     if(startX===null) return;
     var dx = e.changedTouches[0].clientX - startX;
-    if(dx>40){ show(i-1); restart(); } else if(dx<-40){ next(); restart(); }
+    if(dx>40){ show(i-1); restart(); }
+    else if(dx<-40){ next(); restart(); }
+    else { restart(); } // plain tap: make sure autoplay keeps running
     startX=null;
   });
 }
