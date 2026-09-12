@@ -598,7 +598,8 @@ function nowIso(){ return new Date().toISOString(); }
 var INITIAL_HERO = HERO_IMAGES.map(function(src,i){ return {id:uid('hero'), image:src, order:i+1, published:true}; });
 
 var DB = {
-  hero: loadStore("ajaramahavidyalaya_hero", INITIAL_HERO),
+  var DB = {
+  hero: loadStore("ajaramahavidyalaya_hero_v2", INITIAL_HERO),
   news: loadStore("ajaramahavidyalaya_news", INITIAL_NEWS),
   videos: loadStore("ajaramahavidyalaya_videos", INITIAL_VIDEOS),
   gallery: loadStore("ajaramahavidyalaya_gallery", INITIAL_GALLERY),
