@@ -6,24 +6,28 @@
 <title>Janata Education Society's Ajara Mahavidyalaya, Ajara</title>
 <meta name="description" content="Official website of Ajara Mahavidyalaya, Ajara — a Janata Education Society institution offering Arts, Commerce, Science, BCA, M.Com and M.A. programmes. Accredited at B by NAAC, Kolhapur, Maharashtra.">
 <meta name="robots" content="index, follow">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#FFFDF8">
 <link rel="icon" href="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ============ GLOBAL ============ */
 :root{
-  --accent:#71B62C;
-  --accent-dark:#568f21;
-  --accent-light:#EAF6DC;
-  --ink:#1c2117;
-  --ink-soft:#4b5245;
-  --line:#e7ebe2;
-  --bg:#ffffff;
-  --bg-off:#f7faf4;
+  --accent:#F97316;
+  --accent-dark:#EA6A0A;
+  --accent-light:#FFEEDD;
+  --secondary:#22C55E;
+  --secondary-light:#E4FBEC;
+  --yellow:#FBBF24;
+  --highlight:#F43F5E;
+  --ink:#27272A;
+  --ink-soft:#5b5b60;
+  --line:#eee2d6;
+  --bg:#FFFDF8;
+  --bg-off:#F7F8FA;
   --radius:14px;
-  --shadow:0 6px 24px rgba(20,30,10,.08);
-  --shadow-lg:0 18px 48px rgba(20,30,10,.14);
+  --shadow:0 6px 24px rgba(39,39,42,.08);
+  --shadow-lg:0 18px 48px rgba(39,39,42,.16);
   --header-h:74px;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -37,20 +41,21 @@ h1,h2,h3,h4{margin:0;font-weight:700}
 p{margin:0;line-height:1.7;color:var(--ink-soft)}
 .mr{font-family:'Noto Sans Devanagari','Poppins',sans-serif}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;font-size:.95rem;transition:.25s;min-height:44px}
-.btn:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-2px)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;font-size:.95rem;transition:.4s cubic-bezier(.34,1.56,.64,1);min-height:44px;will-change:transform}
+.btn:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-3px) scale(1.045);box-shadow:0 10px 26px rgba(249,115,22,.32)}
+.btn:active{transform:translateY(-1px) scale(.98);transition:.12s}
 .btn.outline{background:transparent;color:var(--accent-dark)}
-.btn.outline:hover{background:var(--accent-light)}
+.btn.outline:hover{background:var(--accent-light);box-shadow:0 8px 20px rgba(249,115,22,.18)}
 .btn.sm{padding:9px 18px;font-size:.85rem}
 .section{padding:64px 0}
 .section-head{text-align:center;max-width:640px;margin:0 auto 40px}
 .eyebrow{color:var(--accent-dark);font-weight:700;letter-spacing:1.5px;font-size:.78rem;text-transform:uppercase}
 .section-title{font-size:clamp(1.6rem,3vw,2.3rem);margin-top:8px}
 .section-sub{margin-top:10px}
-.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:.3s}
-.card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);transition:.45s cubic-bezier(.22,1,.36,1)}
+.card:hover{transform:translateY(-8px) scale(1.015);box-shadow:var(--shadow-lg)}
 .grid{display:grid;gap:22px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal{opacity:0;transform:translateY(38px) scale(.97);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1)}
 .reveal.in{opacity:1;transform:none}
 .badge{display:inline-block;background:var(--accent-light);color:var(--accent-dark);font-weight:700;font-size:.72rem;letter-spacing:.5px;text-transform:uppercase;padding:4px 12px;border-radius:999px}
 .skip-link{position:absolute;left:-999px;top:0;background:var(--accent);color:#fff;padding:10px 16px;z-index:9999}
@@ -86,18 +91,20 @@ nav.main-nav{display:none}
 
 /* ============ HERO ============ */
 .hero{position:relative;height:min(88vh,680px);min-height:420px;overflow:hidden;background:#111}
-.hero-slide{position:absolute;inset:0;opacity:0;transform:scale(1.06);transition:opacity 1.1s ease, transform 5s ease;}
+.hero-slide{position:absolute;inset:0;opacity:0;transform:scale(1.12);transition:opacity 1.6s cubic-bezier(.22,1,.36,1), transform 8s cubic-bezier(.22,1,.36,1);}
 .hero-slide.active{opacity:1;transform:scale(1)}
 .hero-slide img{width:100%;height:100%;object-fit:cover}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.35) 85%)}
-.hero-caption{position:absolute;left:0;right:0;bottom:70px;text-align:center;color:#fff;padding:0 20px}
-.hero-caption .tag{display:inline-block;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.4);padding:6px 16px;border-radius:999px;font-size:.8rem;letter-spacing:1px;font-weight:600}
+.hero-caption{position:absolute;left:0;right:0;bottom:70px;text-align:center;color:#fff;padding:0 20px;animation:heroCaptionIn 1.1s cubic-bezier(.22,1,.36,1) both}
+.hero-caption .tag{display:inline-block;background:rgba(249,115,22,.28);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.5);padding:6px 16px;border-radius:999px;font-size:.8rem;letter-spacing:1px;font-weight:600}
 .hero-caption h1{font-size:clamp(1.4rem,3vw,2rem);margin-top:14px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
-.hero-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.85);border:none;display:flex;align-items:center;justify-content:center;z-index:5}
+@keyframes heroCaptionIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.85);border:none;display:flex;align-items:center;justify-content:center;z-index:5;transition:.3s cubic-bezier(.34,1.56,.64,1)}
+.hero-nav-btn:hover{background:var(--accent);color:#fff;transform:translateY(-50%) scale(1.12)}
 .hero-nav-btn.prev{left:14px}.hero-nav-btn.next{right:14px}
 .hero-dots{position:absolute;bottom:24px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5}
-.hero-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.55)}
-.hero-dots button.active{background:var(--accent);width:22px;border-radius:6px}
+.hero-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(255,255,255,.55);transition:.4s cubic-bezier(.34,1.56,.64,1)}
+.hero-dots button.active{background:var(--accent);width:22px;border-radius:6px;box-shadow:0 0 0 3px rgba(249,115,22,.35)}
 .scroll-explore{position:absolute;bottom:6px;left:0;right:0;text-align:center;color:#fff;font-size:.75rem;font-weight:600;letter-spacing:1px;z-index:5;cursor:pointer;background:none;border:none}
 .scroll-explore .arrow{display:block;margin:6px auto 0;width:18px;height:18px;border-right:2px solid var(--accent);border-bottom:2px solid var(--accent);transform:rotate(45deg);animation:bob 1.6s infinite}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(45deg)}50%{transform:translateY(6px) rotate(45deg)}}
@@ -177,7 +184,7 @@ nav.main-nav{display:none}
 .modal-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
 
 .toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:3000;display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;padding:0 16px}
-.toast{background:#233016;color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;box-shadow:var(--shadow-lg);animation:toastIn .3s ease}
+.toast{background:#27272A;color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;box-shadow:var(--shadow-lg);animation:toastIn .3s ease}
 @keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ============ SEARCH ============ */
@@ -232,15 +239,15 @@ form input:focus,form select:focus,form textarea:focus{border-color:var(--accent
 .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
 
 /* ============ FOOTER ============ */
-footer.site-footer{background:#16210c;color:#dfe7d3;padding:56px 0 20px;margin-top:40px}
+footer.site-footer{background:#27272A;color:#F7F8FA;padding:56px 0 20px;margin-top:40px}
 .footer-grid{display:grid;gap:34px;grid-template-columns:1fr}
 @media(min-width:820px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 footer h4{color:#fff;font-size:.95rem;margin-bottom:14px}
-footer a{color:#c4d1b3;font-size:.86rem;line-height:2.2;display:block}
+footer a{color:#d8d8dc;font-size:.86rem;line-height:2.2;display:block}
 footer a:hover{color:var(--accent)}
 .foot-social{display:flex;gap:10px;margin-top:14px}
 .foot-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
-.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;font-size:.78rem;color:#a9b79a;text-align:center}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.12);margin-top:36px;padding-top:20px;font-size:.78rem;color:#a3a3a8;text-align:center}
 
 /* ============ ADMIN ============ */
 .admin-login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg-off);padding:20px}
@@ -263,9 +270,9 @@ footer a:hover{color:var(--accent)}
 .record-card .title{font-weight:700}
 .record-card .meta{font-size:.78rem;color:var(--ink-soft)}
 .status-pill{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:999px}
-.status-pill.pub{background:var(--accent-light);color:var(--accent-dark)}
-.status-pill.draft{background:#f1e6cf;color:#8a6d1f}
-.status-pill.feat{background:#e6f0ff;color:#2255aa}
+.status-pill.pub{background:var(--secondary-light);color:#158A43}
+.status-pill.draft{background:#FFF4DE;color:#9A6B00}
+.status-pill.feat{background:#FFE4EA;color:var(--highlight)}
 .record-actions{display:flex;gap:8px;flex-wrap:wrap}
 .record-actions button{flex:1;min-width:80px;padding:9px;border-radius:8px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.8rem}
 .record-actions button.danger{color:#c0392b;border-color:#f2c9c2}
@@ -375,12 +382,12 @@ var NAV_ITEMS = [
   {label:"RTI", route:"#/rti"},
   {label:"Contact Us", route:"#/contact"}
 ];
-  
+
 var HERO_IMAGES = [
-  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/0506F9C7-C57B-4712-864B-1A946E11E376.jpg?v=1789213274",
-  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/A929802F-94CF-4CAE-AE59-5F7556C27B27.jpg?v=1789213274",
-  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/B4E9FEF8-04D3-4D71-BE20-F538BA6046B6.jpg?v=1789213274",
-  "https://cdn.shopify.com/s/files/1/1012/1602/6995/files/07D13416-ABBA-4622-B280-D8C8E259AD44.jpg?v=1789213274"
+"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/D18E8EFF-BA68-4181-AF7C-242B28BE246E.png?v=1789199747",
+"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/EBC2124D-1F17-495C-B3FF-D7B0214461EA.png?v=1789199747",
+"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/80355EB8-CE0C-4BEB-B8E6-7E8012FA6537.png?v=1789199747",
+"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/CD066917-BA9F-47BB-AA50-E6BCFD83F2BD.png?v=1789199747"
 ];
 
 var PRINCIPAL = {
@@ -588,7 +595,10 @@ function saveStore(key, data){
 function uid(prefix){ return prefix+"_"+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
 function nowIso(){ return new Date().toISOString(); }
 
+var INITIAL_HERO = HERO_IMAGES.map(function(src,i){ return {id:uid('hero'), image:src, order:i+1, published:true}; });
+
 var DB = {
+  hero: loadStore("ajaramahavidyalaya_hero", INITIAL_HERO),
   news: loadStore("ajaramahavidyalaya_news", INITIAL_NEWS),
   videos: loadStore("ajaramahavidyalaya_videos", INITIAL_VIDEOS),
   gallery: loadStore("ajaramahavidyalaya_gallery", INITIAL_GALLERY),
@@ -665,7 +675,7 @@ function confirmModal(msg, onYes){
   document.getElementById("mYes").onclick = function(){ closeModal(); onYes(); };
 }
 function imgFallbackAttr(){
-  return 'onerror="this.onerror=null;this.src=\'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\"><rect width=\"100%\" height=\"100%\" fill=\"%23EAF6DC\"/><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"16\" fill=\"%23568f21\" text-anchor=\"middle\">Ajara Mahavidyalaya</text></svg>')+'\'"';
+  return 'onerror="this.onerror=null;this.src=\'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\"><rect width=\"100%\" height=\"100%\" fill=\"%23FFEEDD\"/><text x=\"50%\" y=\"50%\" font-family=\"sans-serif\" font-size=\"16\" fill=\"%23EA6A0A\" text-anchor=\"middle\">Ajara Mahavidyalaya</text></svg>')+'\'"';
 }
 
 /* ============================================================
@@ -843,10 +853,12 @@ function renderHome(main){
 }
 
 function heroHtml(){
-  var slides = HERO_IMAGES.map(function(src,i){
+  var heroImgs = DB.hero.filter(function(h){return h.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);}).map(function(h){return h.image;});
+  if(!heroImgs.length) heroImgs = HERO_IMAGES;
+  var slides = heroImgs.map(function(src,i){
     return '<div class="hero-slide'+(i===0?' active':'')+'"><img src="'+src+'" alt="Ajara Mahavidyalaya campus image '+(i+1)+'" '+(i===0?'loading="eager"':'loading="lazy"')+'></div>';
   }).join("");
-  var dots = HERO_IMAGES.map(function(_,i){ return '<button aria-label="Go to slide '+(i+1)+'" class="'+(i===0?'active':'')+'" data-i="'+i+'"></button>'; }).join("");
+  var dots = heroImgs.map(function(_,i){ return '<button aria-label="Go to slide '+(i+1)+'" class="'+(i===0?'active':'')+'" data-i="'+i+'"></button>'; }).join("");
   return '<section class="hero" id="heroSection">'+slides+
     '<div class="hero-overlay"></div>'+
     '<div class="hero-caption"><span class="tag">Learn &bull; Grow &bull; Achieve</span><h1>Explore Ajara Mahavidyalaya</h1></div>'+
@@ -1173,7 +1185,7 @@ function renderFacultyRoute(parts, main){
     });
   }
 }
-function placeholderAvatar(){ return "data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="#EAF6DC"/><circle cx="50" cy="38" r="18" fill="#71B62C"/><rect x="20" y="62" width="60" height="30" rx="15" fill="#71B62C"/></svg>'); }
+function placeholderAvatar(){ return "data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="#FFEEDD"/><circle cx="50" cy="38" r="18" fill="#F97316"/><rect x="20" y="62" width="60" height="30" rx="15" fill="#F97316"/></svg>'); }
 function renderFacultyDetail(id, main){
   var f = DB.faculty.filter(function(x){return x.id===id;})[0];
   if(!f){ render404(main); return; }
@@ -1546,7 +1558,7 @@ function renderSearchPage(main){ openSearch(); main.innerHTML = pageHero("Search
 function renderFooter(){
   var c = DB.contact;
   document.getElementById("siteFooter").innerHTML = '<div class="container footer-grid">'+
-   '<div><h4>Ajara Mahavidyalaya</h4><p style="color:#c4d1b3;font-size:.86rem;line-height:1.8">'+esc(c.name)+'<br>'+esc(c.address)+'<br>'+esc(c.phone)+'</p>'+
+   '<div><h4>Ajara Mahavidyalaya</h4><p style="color:#d8d8dc;font-size:.86rem;line-height:1.8">'+esc(c.name)+'<br>'+esc(c.address)+'<br>'+esc(c.phone)+'</p>'+
    '<div class="foot-social">'+socialIcon(c.facebook,"f")+socialIcon(c.twitter,"x")+socialIcon(c.linkedin,"in")+socialIcon(c.youtube,"yt")+'</div></div>'+
    '<div><h4>Explore</h4><a href="#/home">Home</a><a href="#/about">About Us</a><a href="#/programme">Programme</a><a href="#/faculty">Faculty</a><a href="#/facilities">Facilities</a><a href="#/naac">IQAC</a><a href="#/blog">Blog</a><a href="#/contact">Contact Us</a></div>'+
    '<div><h4>Quick Links</h4><a href="#/about/about-sanstha">About Sanstha</a><a href="#/principal-desk">Principal\'s Desk</a><a href="#/chairman-desk">Chairman\'s Desk</a><a href="#/about/vision-mission">Vision And Mission</a><a href="#/about/code-of-conduct">Code Of Conduct</a></div>'+
