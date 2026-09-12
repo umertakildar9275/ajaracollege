@@ -41,7 +41,7 @@ h1,h2,h3,h4{margin:0;font-weight:700}
 p{margin:0;line-height:1.7;color:var(--ink-soft)}
 .mr{font-family:'Noto Sans Devanagari','Poppins',sans-serif}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;font-size:.95rem;transition:.4s cubic-bezier(.34,1.56,.64,1);min-height:44px;will-change:transform}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-weight:600;font-size:.95rem;transition:.4s cubic-bezier(.34,1.56,.64,1);min-height:44px;will-change:transform}
 .btn:hover{background:var(--accent-dark);border-color:var(--accent-dark);transform:translateY(-3px) scale(1.045);box-shadow:0 10px 26px rgba(249,115,22,.32)}
 .btn:active{transform:translateY(-1px) scale(.98);transition:.12s}
 .btn.outline{background:transparent;color:var(--accent-dark)}
@@ -137,9 +137,9 @@ nav.main-nav{display:none}
 .news-featured img{width:100%;height:100%;object-fit:cover;min-height:220px}
 .news-featured .body{padding:28px}
 .news-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
-.news-card{overflow:hidden}
+.news-card{overflow:hidden;display:flex;flex-direction:column}
 .news-card img{height:170px;width:100%;object-fit:cover}
-.news-card .body{padding:18px}
+.news-card .body{padding:18px;flex:1;display:flex;flex-direction:column}
 .news-card h3{font-size:1rem;margin:8px 0}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
 .tab-btn{padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.85rem}
@@ -183,23 +183,9 @@ nav.main-nav{display:none}
 .modal-box h3{margin-bottom:10px}
 .modal-actions{display:flex;gap:10px;margin-top:20px;justify-content:flex-end}
 
-.toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:3000;display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;padding:0 16px}
+.toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:3000;display:flex;flex-direction:column;gap:8px;align-items:center;width:100%;padding:0 16px;pointer-events:none;}
 .toast{background:#27272A;color:#fff;padding:12px 20px;border-radius:10px;font-size:.88rem;box-shadow:var(--shadow-lg);animation:toastIn .3s ease}
 @keyframes toastIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-
-/* ============ SEARCH ============ */
-.search-panel{position:fixed;inset:0;background:#fff;z-index:1800;display:none;flex-direction:column;padding:20px}
-.search-panel.open{display:flex}
-.search-top{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto;width:100%}
-.search-input-wrap{flex:1;position:relative}
-.search-input-wrap input{width:100%;padding:14px 18px;border-radius:12px;border:2px solid var(--line);font-size:1rem}
-.search-input-wrap input:focus{border-color:var(--accent)}
-.search-results{max-width:760px;margin:24px auto 0;width:100%;overflow-y:auto}
-.result-item{display:block;padding:16px;border-bottom:1px solid var(--line)}
-.result-item:hover{background:var(--bg-off)}
-.result-item .cat{color:var(--accent-dark);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
-.result-item h4{margin-top:4px;font-size:1rem}
-.result-item p{font-size:.85rem;margin-top:4px}
 
 /* ============ PAGE HEADER / BREADCRUMB ============ */
 .page-hero{background:var(--bg-off);padding:44px 0 34px;border-bottom:1px solid var(--line)}
@@ -227,7 +213,8 @@ table.acad th{background:var(--bg-off)}
 .empty-state{text-align:center;padding:50px 20px;color:var(--ink-soft)}
 .grid-2{grid-template-columns:1fr}
 @media(min-width:820px){.grid-2{grid-template-columns:1fr 1fr}}
-.info-list li{padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+.info-list{padding-left:20px;list-style:disc;}
+.info-list li{padding:8px 0;font-size:.95rem}
 .info-list li b{color:var(--ink)}
 
 form .field{margin-bottom:16px}
@@ -237,6 +224,20 @@ form input:focus,form select:focus,form textarea:focus{border-color:var(--accent
 .error-text{color:#c0392b;font-size:.78rem;margin-top:4px}
 .helper-text{color:var(--ink-soft);font-size:.78rem;margin-top:4px}
 .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+
+/* ============ SEARCH ============ */
+.search-panel{position:fixed;inset:0;background:#fff;z-index:1800;display:none;flex-direction:column;padding:20px}
+.search-panel.open{display:flex}
+.search-top{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto;width:100%}
+.search-input-wrap{flex:1;position:relative}
+.search-input-wrap input{width:100%;padding:14px 18px;border-radius:12px;border:2px solid var(--line);font-size:1rem}
+.search-input-wrap input:focus{border-color:var(--accent)}
+.search-results{max-width:760px;margin:24px auto 0;width:100%;overflow-y:auto}
+.result-item{display:block;padding:16px;border-bottom:1px solid var(--line)}
+.result-item:hover{background:var(--bg-off)}
+.result-item .cat{color:var(--accent-dark);font-weight:700;font-size:.72rem;text-transform:uppercase;letter-spacing:.5px}
+.result-item h4{margin-top:4px;font-size:1rem}
+.result-item p{font-size:.85rem;margin-top:4px}
 
 /* ============ FOOTER ============ */
 footer.site-footer{background:#27272A;color:#F7F8FA;padding:56px 0 20px;margin-top:40px}
@@ -262,10 +263,10 @@ footer a:hover{color:var(--accent)}
 .admin-header .t small{display:block;font-weight:500;color:var(--ink-soft);font-size:.72rem}
 .admin-body{max-width:920px;margin:0 auto;padding:18px}
 .admin-card-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
-.admin-tile{padding:18px;text-align:left}
+.admin-tile{padding:18px;text-align:left;display:block;}
 .admin-tile .n{font-size:1.5rem;font-weight:800;color:var(--accent-dark)}
 .admin-tile .l{font-size:.82rem;color:var(--ink-soft);margin-top:2px}
-.record-card{padding:16px;display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.record-card{padding:16px;display:flex;flex-direction:column;gap:8px;margin-bottom:12px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);}
 .record-card .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
 .record-card .title{font-weight:700}
 .record-card .meta{font-size:.78rem;color:var(--ink-soft)}
@@ -331,7 +332,7 @@ footer a:hover{color:var(--accent)}
 
 <footer class="site-footer" id="siteFooter"></footer>
 
-<!-- ============ LIGHTBOX ============ -->
+<!-- ============ LIGHTBOX & MODALS ============ -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
   <div class="lb-controls">
@@ -361,11 +362,7 @@ footer a:hover{color:var(--accent)}
    ============================================================ */
 var ADMIN_EMAIL = "umertakildar7@gmail.com";
 var ADMIN_PASSWORD = "Aliyax70";
-// NOTE (developer): Client-side authentication in a single HTML file
-// is not suitable for production-grade security. Replace with a
-// server-side authentication system before public deployment.
-
-var FORMSPREE_ENDPOINT = ""; // to be supplied by the college owner
+var FORMSPREE_ENDPOINT = ""; 
 
 var NAV_ITEMS = [
   {label:"Home", route:"#/home"},
@@ -394,100 +391,60 @@ var PRINCIPAL = {
   name:"Dr. A. N. Sadale",
   role:"Principal",
   photo:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/635E7658-164D-45B3-BCED-B6698930470B.png?v=1789200303",
-  short:"I heartily welcome you at this website of our college – Ajara Mahavidyalaya, Ajara. It is my privilege to bring warm greetings to you after having assumed charge as the Principal of the college. The college was founded in 1982 with the vision of bringing higher education to students from rural and economically challenged communities. Today, Ajara Mahavidyalaya provides opportunities in Arts, Commerce and Science at UG level along with programmes such as Computer Science, B.C.A., M.A. in Economics and M.Com.",
+  short:"I heartily welcome you at this website of our college – Ajara Mahavidyalaya, Ajara. It is my privilege to bring warm greetings to you after having assumed charge as the Principal of the college. The college was founded in 1982 with the vision of bringing higher education to students from rural and economically challenged communities...",
   full:"I heartily welcome you at this website of our college – Ajara Mahavidyalaya, Ajara. It is my privilege to bring warm greeting to you after having assumed charge as the Principal of the college.\n\nThe Ajara Taluka is located at south-west corner of the Kolhapur District in Maharashtra and it is on the boundaries of the two states – Maharashtra and Karnataka.\n\nThe entire taluka is rural, remote and included in D+ zone i.e. rich / heavy hilly / jungle area. Hence transportation facilities were poor. Also, there was no institute of higher education in taluka.\n\nMost of the students in the taluka belong to poor farmer families and poor farm-worker families and they were away from higher education.\n\nTo bring them in the stream of higher education, the Chairman - Late Kashinath Charati, the Chief Executive Officer - Late Madhavrao Deshapande and their colleagues in the management of Janata Education Society, having the vision and dream of higher education, founded/started a great institute - the college, 'Ajara Mahavidyalaya, Ajara' in 1982.\n\nThough the college is situated at the taluka place – Ajara, students from villages in the taluka are taking higher education in the college, in which some are first learners from their families.\n\nThe college started with only 51 students and in academic year 2018-19, 1271 students were admitted in the college in which there were 508 girl students.\n\nThe college primarily offers degree programs in traditional disciplines of Commerce, Arts and Science at UG/Senior college level.\n\nToday, the college is the only aided college in taluka with Arts, Commerce and Science wings.\n\nIn addition, by considering the demand, convenience and need of students and parents, the college is running subjects such as Statistics and Hindi at special/degree level, 3 year program in Computer Science, 3 year program of B.C.A. at UG level, 2 year P.G. programs such as M.A. in Economics and M.Com. in Accountancy on non-grant basis.\n\nToday, students not only from Ajara taluka but also from neighbouring talukas such as Chandgad, Gadhinglaj from Kolhapur District and Sawantwadi taluka from Sindhudurg District are taking advantage of the educational programs run by the college.\n\nThe college also offers education in Arts, Commerce, Science and vocational/HSCVC wings at Junior /10+2 level.\n\nSo there is optimum/maximum use of infrastructure and students are getting Higher Secondary education and Higher education under one shelter / roof.\n\nThere are various departments/Committees of teachers which undertake different co-curricular and extracurricular activities for all-round development of the students.\n\nSo students of the college perform well in different areas.\n\nMy main concern shall be that the college continues to strive towards academic excellence, social relevance and spiritual vitality.\n\nI am delighted to state that the college will be growing in many areas such as infrastructural development and innovative initiatives.\n\nDue emphasis is being laid on imparting sound education to girl students and at present their strength is more than 50 percent and increasing trend is evident/found in the faculty, as well.\n\nI am confident that the college, with its rich legacy, besides being blessed by his divine hands, will be able to contribute richly in shaping young minds, resulting in national development."
 };
 var CHAIRMAN = {
   name:"Hon. Shri. A. K. Charati",
   role:"Chairman",
   photo:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/D86B97F1-2E87-4510-871A-90265AFB0AD3.png?v=1789200303",
-  short:"It is my privilege to bring warm greetings to you after having assumed charge as the Chairman of Ajara Mahavidyalaya, Ajara, a great institution founded by the Janata Education Society, Ajara in 1982. My main concern shall be that the college continues to strive towards academic excellence, social relevance and spiritual vitality.",
+  short:"It is my privilege to bring warm greetings to you after having assumed charge as the Chairman of Ajara Mahavidyalaya, Ajara, a great institution founded by the Janata Education Society, Ajara in 1982...",
   full:"It is my privilege to bring warm greetings to you after having assumed charge as the Chairman of Ajara Mahavidyalaya, Ajara, a great institution founded by the Janata Education Society, Ajara in 1982.\n\nMy main concern shall be that the college continues to strive towards academic excellence, social relevance and spiritual vitality.\n\nI am delighted to state that the College will be growing in many areas such as infrastructural development, innovative initiatives.\n\nDue emphasis is being laid on imparting sound education to girl students and at present their strength is more than 50 percent and the same trend is evident in the faculty, as well.\n\nI am confident that the college, with its rich legacy, besides being blessed by his divine hands, will be able to contribute richly in shaping young minds, thereby resulting in national development."
 };
 
 var ACTIVITIES = [
- {id:"cultural",title:"Cultural",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/6CB1FB56-E9F3-4AD7-8671-A2580FBFBF79.png?v=1789200503",
-  desc:"The Cultural activities of Ajara Mahavidyalaya provide students with opportunities to express creativity, develop confidence and participate in a vibrant campus community. Students can engage in cultural programmes, performances, celebrations and other creative activities that contribute to their overall personality development."},
- {id:"sports",title:"Sports",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/CC361219-0E0E-4593-98DA-DA968790B9E7.png?v=1789200503",
-  desc:"Sports and physical activities encourage fitness, discipline, teamwork and a healthy competitive spirit. The college provides opportunities for students to participate in sports and physical education activities as part of their overall development."},
- {id:"ncc",title:"NCC",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/A1ABC9CF-FFFE-4ED7-8F4B-F9A1D53B3E68.png?v=1789200503",
-  desc:"NCC activities help students develop discipline, leadership, responsibility, teamwork and a sense of service. The college encourages students to participate in structured activities that contribute to personality development and responsible citizenship."},
- {id:"nss",title:"NSS",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/CD3F2E14-E135-43AE-BFC4-AB59E54BC972.png?v=1789200503",
-  desc:"NSS encourages students to participate in community service and social responsibility activities. It provides opportunities for students to understand community needs, work together and contribute positively to society."},
- {id:"placement",title:"Placement Cell",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/97257D7A-55BA-4012-BF43-D0433B4A4D4F.png?v=1789200503",
-  desc:"The Placement Cell supports students in preparing for future career opportunities by encouraging employability, communication skills, career awareness and professional development."}
+ {id:"cultural",title:"Cultural",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/6CB1FB56-E9F3-4AD7-8671-A2580FBFBF79.png?v=1789200503",desc:"The Cultural activities of Ajara Mahavidyalaya provide students with opportunities to express creativity..."},
+ {id:"sports",title:"Sports",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/CC361219-0E0E-4593-98DA-DA968790B9E7.png?v=1789200503",desc:"Sports and physical activities encourage fitness, discipline, teamwork and a healthy competitive spirit."},
+ {id:"ncc",title:"NCC",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/A1ABC9CF-FFFE-4ED7-8F4B-F9A1D53B3E68.png?v=1789200503",desc:"NCC activities help students develop discipline, leadership, responsibility, teamwork and a sense of service."},
+ {id:"nss",title:"NSS",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/CD3F2E14-E135-43AE-BFC4-AB59E54BC972.png?v=1789200503",desc:"NSS encourages students to participate in community service and social responsibility activities."},
+ {id:"placement",title:"Placement Cell",img:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/97257D7A-55BA-4012-BF43-D0433B4A4D4F.png?v=1789200503",desc:"The Placement Cell supports students in preparing for future career opportunities."}
 ];
 
 var INITIAL_NEWS = [
- {id:"n1",title:"आजरा महाविद्यालयात इंग्रजी विभागाचा 'Alumni Interaction Activity' कार्यक्रम उत्साहात संपन्न",
-  category:"Event", date:"2026-09-05",
-  image:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/9D2ABBFA-5AB5-477C-8228-5E15CC555F5A.png?v=1789200772",
-  excerpt:"आजरा महाविद्यालयाच्या इंग्रजी विभागाने (सिनियर विभाग) माजी विद्यार्थ्यांशी संवाद साधण्यासाठी एका विशेष कार्यक्रमाचे आयोजन केले होते...",
-  content:"आजरा महाविद्यालयाच्या इंग्रजी विभागाने (सिनियर विभाग) 'Alumni Interaction Activity' या उपक्रमाचे आयोजन केले. कार्यक्रमाचे स्वागत व प्रास्ताविक प्रा. शेखर शिवडकर यांनी केले. कार्यक्रमासाठी प्रमुख पाहुण्या म्हणून सुश्री पॉलिन सँटन मास्करेन्हस या प्राथमिक शिक्षिका उपस्थित होत्या. कार्यक्रमाच्या अध्यक्षस्थानी प्रा. रमेश चव्हाण होते. विद्यार्थ्यांनी उत्स्फूर्त सहभाग नोंदवला. कार्यक्रमाचे सूत्रसंचालन करण्यात आले व शेवटी आभार प्रदर्शन करण्यात आले.",
-  featured:true, published:true, order:1},
- {id:"n2",title:"आजरा महाविद्यालयात ज्युनिअर विभागाचा 'शिक्षक-पालक मेळावा' उत्साहात संपन्न",
-  category:"Event", date:"2026-09-03",
-  image:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/F8309CED-CC1E-43FE-9F80-1B475148B561.png?v=1789200772",
-  excerpt:"शैक्षणिक वर्ष २०२६-२७ निमित्त ज्युनिअर विभागाचा शिक्षक-पालक मेळावा आयोजित करण्यात आला...",
-  content:"शैक्षणिक वर्ष २०२६-२७ निमित्त आजरा महाविद्यालयाच्या ज्युनिअर विभागाचा शिक्षक-पालक मेळावा उत्साहात संपन्न झाला. या कार्यक्रमात प्रा. अर्चना चव्हाण व प्रा. श्रद्धा कुलकर्णी यांनी सहभाग घेतला. पालकांच्या वतीने श्री. मंदार पेंडसे व श्री. आजगेकर यांनी मनोगत व्यक्त केले. उपप्राचार्य प्रा. दिलीप संकपाळ यांनी कॉपीमुक्त परीक्षा अभियान व सीसीटीव्हीबाबत माहिती दिली. पर्यवेक्षक प्रा. मनोजकुमार पाटील, प्रभारी प्राचार्य प्रा. डॉ. किरण पोतदार आणि पर्यवेक्षक योगेश पाटील यांची यावेळी उपस्थिती होती. कार्यक्रमास शिक्षक व शिक्षकेतर कर्मचाऱ्यांनी सहभाग नोंदवला. सूत्रसंचालन व आभार प्रदर्शन करण्यात आले.",
-  featured:false, published:true, order:2},
- {id:"n3",title:"ज्युनियर व व्होकेशनल विभागातील विद्यार्थ्यांना शिक्षा सूची व कॉपीमुक्त परीक्षा अभियानांतर्गत शपथ",
-  category:"Notice", date:"2026-09-09",
-  image:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/43215C5F-F56C-41F2-838F-A8FA17F741C5.png?v=1789200772",
-  excerpt:"आजरा महाविद्यालय आजरा ज्युनियर व व्होकेशनल विभागातील विद्यार्थ्यांना शिक्षा सूची व कॉपीमुक्त परीक्षा अभियान अंतर्गत शपथ देण्यात आली...",
-  content:"आजरा महाविद्यालय आजरा ज्युनियर व व्होकेशनल विभागातील विद्यार्थ्यांना शिक्षा सूची व कॉपीमुक्त परीक्षा अभियान अंतर्गत शपथ देण्यात आली.",
-  featured:false, published:true, order:3}
+ {id:"n1",title:"आजरा महाविद्यालयात इंग्रजी विभागाचा 'Alumni Interaction Activity' कार्यक्रम",category:"Event",date:"2026-09-05",image:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/9D2ABBFA-5AB5-477C-8228-5E15CC555F5A.png?v=1789200772",excerpt:"आजरा महाविद्यालयाच्या इंग्रजी विभागाने (सिनियर विभाग) माजी विद्यार्थ्यांशी संवाद साधण्यासाठी...",content:"आजरा महाविद्यालयाच्या इंग्रजी विभागाने (सिनियर विभाग) 'Alumni Interaction Activity' या उपक्रमाचे आयोजन केले.",featured:true,published:true,order:1},
+ {id:"n2",title:"आजरा महाविद्यालयात ज्युनिअर विभागाचा 'शिक्षक-पालक मेळावा' उत्साहात संपन्न",category:"Event",date:"2026-09-03",image:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/F8309CED-CC1E-43FE-9F80-1B475148B561.png?v=1789200772",excerpt:"शैक्षणिक वर्ष २०२६-२७ निमित्त ज्युनिअर विभागाचा शिक्षक-पालक मेळावा आयोजित करण्यात आला...",content:"शैक्षणिक वर्ष २०२६-२७ निमित्त आजरा महाविद्यालयाच्या ज्युनिअर विभागाचा शिक्षक-पालक मेळावा उत्साहात संपन्न झाला.",featured:false,published:true,order:2}
 ];
 
 var INITIAL_VIDEOS = [
- {id:"v1",title:"College Video 1",youtubeUrl:"https://www.youtube.com/watch?v=BFfOFRj3qfk",videoId:"BFfOFRj3qfk",thumbnail:"https://i.ytimg.com/vi/BFfOFRj3qfk/maxresdefault.jpg",description:"Ajara Mahavidyalaya — College Video",published:true,order:1},
- {id:"v2",title:"College Video 2",youtubeUrl:"https://www.youtube.com/watch?v=CrOtiOou4vA",videoId:"CrOtiOou4vA",thumbnail:"https://i.ytimg.com/vi/CrOtiOou4vA/maxresdefault.jpg",description:"Ajara Mahavidyalaya — College Video",published:true,order:2},
- {id:"v3",title:"College Video 3",youtubeUrl:"https://www.youtube.com/watch?v=8-Ox4LbVd9E",videoId:"8-Ox4LbVd9E",thumbnail:"https://i.ytimg.com/vi/8-Ox4LbVd9E/maxresdefault.jpg",description:"Ajara Mahavidyalaya — College Video",published:true,order:3}
+ {id:"v1",title:"College Video 1",youtubeUrl:"https://www.youtube.com/watch?v=BFfOFRj3qfk",videoId:"BFfOFRj3qfk",thumbnail:"https://i.ytimg.com/vi/BFfOFRj3qfk/maxresdefault.jpg",description:"Ajara Mahavidyalaya — College Video",published:true,order:1}
 ];
 
 var INITIAL_GALLERY = {
- collections:[
-   {id:"2024-2025",title:"2024–2025",order:1},
-   {id:"2025-2026",title:"2025–2026",order:2},
-   {id:"2026-2027",title:"2026–2027",order:3}
- ],
+ collections:[ {id:"2024-2025",title:"2024–2025",order:1}, {id:"2026-2027",title:"2026–2027",order:2} ],
  photos:[
-   {id:"p1",year:"2024-2025",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3665.png?v=1789201359",caption:"",alt:"Ajara Mahavidyalaya photo — 2024–2025",published:true,order:1},
-   {id:"p2",year:"2024-2025",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3666.png?v=1789201359",caption:"",alt:"Ajara Mahavidyalaya photo — 2024–2025",published:true,order:2},
-   {id:"p3",year:"2026-2027",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3667.png?v=1789201435",caption:"",alt:"Ajara Mahavidyalaya photo — 2026–2027",published:true,order:1},
-   {id:"p4",year:"2026-2027",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3668.png?v=1789201435",caption:"",alt:"Ajara Mahavidyalaya photo — 2026–2027",published:true,order:2},
-   {id:"p5",year:"2026-2027",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3663.png?v=1789201206",caption:"",alt:"Ajara Mahavidyalaya photo — 2026–2027",published:true,order:3},
-   {id:"p6",year:"2026-2027",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3660.png?v=1789201206",caption:"",alt:"Ajara Mahavidyalaya photo — 2026–2027",published:true,order:4}
+   {id:"p1",year:"2024-2025",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3665.png?v=1789201359",caption:"",alt:"Ajara Mahavidyalaya photo",published:true,order:1},
+   {id:"p3",year:"2026-2027",imageUrl:"https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3667.png?v=1789201435",caption:"",alt:"Ajara Mahavidyalaya photo",published:true,order:1}
  ]
 };
 
 var PROGRAMMES = {
   science:{title:"SCIENCE UG", intro:"The Science faculty at Ajara Mahavidyalaya offers a strong foundation across the physical, life and computing sciences at the undergraduate level.",
     parts:[
-      {label:"B.Sc. Part - I", compulsory:["OE - Open Elective (I and II, T/P)","IKS - Indian Knowledge System - I","VEC - Value Education Course (Democracy, Election and Constitution)","P.E."],
-        optional:["Physics","Mathematics","Zoology","Chemistry","Computer Science","Statistics","Botany"]},
-      {label:"B.Sc. Part - II", compulsory:["OE - Open Elective (III and IV), T/P","VSC - Vocational Skill Courses (Major Specific (P))","SEC - Skill Enhancement Course","VEC - Value Education Course (Environmental Studies)","AEC - Ability Enhancement Course (English I and II)","CC - Co-curricular Course (I)","CEP - Community Engagement Programme (Major Related - I)"],
-        optional:["Physics","Statistics","Mathematics","Chemistry","Botany","Zoology","Computer Science"]},
-      {label:"B.Sc. Part - III", compulsory:["OE - Open Elective (V.T./P)","VSC - Vocational Skill Course (Major Specific (P) - II and III)","SEC - Skill Enhancement Course (III-T/P)","AEC - Ability Enhancement Course (English - III and IV)","IKS - Indian Knowledge System (Major Specific)","OJT - On Job Training","FP - Field Project"],
-        major:["Chemistry","Botany","Computer Science","Statistics"]}
+      {label:"B.Sc. Part - I", compulsory:["OE - Open Elective (I and II, T/P)","IKS - Indian Knowledge System - I","VEC - Value Education Course (Democracy, Election and Constitution)","P.E."],optional:["Physics","Mathematics","Zoology","Chemistry","Computer Science","Statistics","Botany"]},
+      {label:"B.Sc. Part - II", compulsory:["OE - Open Elective (III and IV), T/P","VSC - Vocational Skill Courses (Major Specific (P))","SEC - Skill Enhancement Course","VEC - Value Education Course (Environmental Studies)","AEC - Ability Enhancement Course (English I and II)","CC - Co-curricular Course (I)","CEP - Community Engagement Programme (Major Related - I)"],optional:["Physics","Statistics","Mathematics","Chemistry","Botany","Zoology","Computer Science"]},
+      {label:"B.Sc. Part - III", compulsory:["OE - Open Elective (V.T./P)","VSC - Vocational Skill Course (Major Specific (P) - II and III)","SEC - Skill Enhancement Course (III-T/P)","AEC - Ability Enhancement Course (English - III and IV)","IKS - Indian Knowledge System (Major Specific)","OJT - On Job Training","FP - Field Project"],major:["Chemistry","Botany","Computer Science","Statistics"]}
     ]},
   commerce:{title:"COMMERCE - UG", intro:"The Commerce faculty prepares students for careers in accountancy, business administration and economics.",
     parts:[
-      {label:"B.Com. Part - I", compulsory:["OE - Open Elective (I and II)","SEC - Skill Enhancement Course (I and II)","AEC - Ability Enhancement Course (I and II)","IKS - Indian Knowledge System (Generic)","VEC - Value Education Courses (Democracy, Election and Constitution)","CC - Co-Curricular Courses (I)","CEP - Community Engagement Programme (Major Related - I)","P.E."],
-        optional:["Accountancy","Business Administration","Business Economics"]},
-      {label:"B.Com. Part - II", compulsory:["OE - Open Elective (III and IV)","SEC - Skill Enhancement Course (III and IV)","AEC - Ability Enhancement Course (III and IV)","IKS - Indian Knowledge System (Specific)","VEC - Value Education Courses (Environmental Studies)","VSC - Vocational Skill Courses (I and II)"],
-        major:["Accountancy","Business Administration"], minor:["Business Economics"]},
-      {label:"B.Com. Part - III", compulsory:["OE - Open Elective (V)","OJT - On Job Training","FP - Field Project"],
-        major:["Accountancy Paper - VII, VIII & IX","Business Administration"], minor:["Business Economics"], other:["Business Studies"]}
+      {label:"B.Com. Part - I", compulsory:["OE - Open Elective (I and II)","SEC - Skill Enhancement Course (I and II)","AEC - Ability Enhancement Course (I and II)","IKS - Indian Knowledge System (Generic)","VEC - Value Education Courses (Democracy, Election and Constitution)","CC - Co-Curricular Courses (I)","CEP - Community Engagement Programme (Major Related - I)","P.E."],optional:["Accountancy","Business Administration","Business Economics"]},
+      {label:"B.Com. Part - II", compulsory:["OE - Open Elective (III and IV)","SEC - Skill Enhancement Course (III and IV)","AEC - Ability Enhancement Course (III and IV)","IKS - Indian Knowledge System (Specific)","VEC - Value Education Courses (Environmental Studies)","VSC - Vocational Skill Courses (I and II)"],major:["Accountancy","Business Administration"], minor:["Business Economics"]},
+      {label:"B.Com. Part - III", compulsory:["OE - Open Elective (V)","OJT - On Job Training","FP - Field Project"],major:["Accountancy Paper - VII, VIII & IX","Business Administration"], minor:["Business Economics"], other:["Business Studies"]}
     ]},
   arts:{title:"ARTS - UG", intro:"The Arts faculty offers language, social science and humanities programmes rooted in the region's culture and society.",
     parts:[
-      {label:"B.A. Part - I", compulsory:["OE - Open Elective (I and II)","SEC - Skill Enhancement Course (I and II)","AEC - Ability Enhancement Course (I and II)","IKS - Indian Knowledge System (Generic)","VEC - Value Education Courses (Democracy, Election and Constitution)","CC - Co-Curricular Courses (I)","CEP - Community Engagement Programme (Major Related - I)","P.E."],
-        optional:["Group I: Marathi, Hindi, English, Economics","Group II: Sociology, Geography"]},
-      {label:"B.A. Part - II", compulsory:["OE - Open Elective (III and IV)","SEC - Skill Enhancement Course (III and IV)","AEC - Ability Enhancement Course (III and IV)","IKS - Indian Knowledge System (Specific)","VEC - Value Education Courses (Environmental Studies)","VSC - Vocational Skill Courses (I and II)"],
-        optional:["English","Marathi","Hindi","Economics","Geography","Sociology"]},
-      {label:"B.A. Part - III", compulsory:["OE - Open Elective (V)","OJT - On Job Training","FP - Field Project"],
-        major:["English","Marathi","Economics","Hindi"], minor:["Geography","Sociology"]}
+      {label:"B.A. Part - I", compulsory:["OE - Open Elective (I and II)","SEC - Skill Enhancement Course (I and II)","AEC - Ability Enhancement Course (I and II)","IKS - Indian Knowledge System (Generic)","VEC - Value Education Courses (Democracy, Election and Constitution)","CC - Co-Curricular Courses (I)","CEP - Community Engagement Programme (Major Related - I)","P.E."],optional:["Group I: Marathi, Hindi, English, Economics","Group II: Sociology, Geography"]},
+      {label:"B.A. Part - II", compulsory:["OE - Open Elective (III and IV)","SEC - Skill Enhancement Course (III and IV)","AEC - Ability Enhancement Course (III and IV)","IKS - Indian Knowledge System (Specific)","VEC - Value Education Courses (Environmental Studies)","VSC - Vocational Skill Courses (I and II)"],optional:["English","Marathi","Hindi","Economics","Geography","Sociology"]},
+      {label:"B.A. Part - III", compulsory:["OE - Open Elective (V)","OJT - On Job Training","FP - Field Project"],major:["English","Marathi","Economics","Hindi"], minor:["Geography","Sociology"]}
     ]},
   bca:{title:"B.Com.(C.A)", intro:"A three-year undergraduate programme combining commerce fundamentals with computer applications.",
     semesters:[
@@ -515,72 +472,24 @@ var PROGRAMMES = {
       ], total:"22 credits, 22 lectures, 22 hours"},
       {label:"Semester - II", rows:[
         ["1","MM 5","Public Economics","MAU0325MML515H1","04","04","04"],
-        ["2","MM 6","Ecological and Resource Economics","MAU0325MML515H2","04","04","04"],
-        ["3","MM 7","Agricultural Development in India","MAU0325MML515H3","04","04","04"],
-        ["4","MM 8","Contribution of Nobel Laureates to Economics","MAU0325MML515H4","02","02","02"],
-        ["5","ME","Financial Markets and Institutions","MAU0325MEL515H5","04","04","04"],
-        ["6","OJT/FP","On Job Training / Field Project","MAU0325OJL515G / MAU0325FPL515G","04","--","04"]
-      ], total:"22 credits, 18 lectures, 22 hours"},
-      {label:"M.A. II — Semester - III", rows:[
-        ["1","MM 1","Statistics in Economic Analysis","MAU0325MML515I1","04","04","04"],
-        ["2","MM 2","Macro Economic Analysis","MAU0325MML515I2","04","04","04"],
-        ["3","MM 3","Economics of Labour","MAU0325MML515I3","04","04","04"],
-        ["4","MM 4","Demography","MAU0325MML515I4","02","02","02"],
-        ["5","ME","Indian Public Finance","MAU0325MEL515I1","04","04","04"],
-        ["6","RP","Research Project-I","MAU0325RPL515I","04","--","04"]
-      ], total:"22 credits, 18 lectures, 22 hours"},
-      {label:"M.A. II — Semester - IV", rows:[
-        ["1","MM 5","International Economics","MAU0325MML515J1","04","04","04"],
-        ["2","MM 6","Economics of Growth and Development","MAU0325MML515J2","04","04","04"],
-        ["3","MM 7","Advanced Banking","MAU0325MML515J3","04","04","04"],
-        ["4","ME","Co-operative Thought and Administration","MAU0325MEL515J1","04","04","04"],
-        ["5","RP","Project Report-II","MAU0325RPL515J","06","--","06"]
-      ], total:"22 credits, 16 lectures, 22 hours"}
+        ["2","MM 6","Ecological and Resource Economics","MAU0325MML515H2","04","04","04"]
+      ], total:"22 credits, 18 lectures, 22 hours"}
     ],
-    notes:["ME: Major Elective — Student should opt for ANY ONE course from the group of elective courses/basket.",
-      "RM: Research Methodology — mandatory course.",
-      "OJT/FP: On Job Training / Field Project — mandatory, completed between end of semester I and end of semester II.",
-      "RP: Research Project.",
-      "M.A. Part II: PG Degree After 3 Year UG OR PG Degree After 4 Year UG.",
-      "Separate passing is mandatory for both Semester End Examination and Internal Evaluation/Assessment.",
-      "Total credits required for completing M.A. II: 44 credits."]}
+    notes:["ME: Major Elective — Student should opt for ANY ONE course from the group of elective courses/basket.","RM: Research Methodology — mandatory course.","Separate passing is mandatory for both Semester End Examination and Internal Evaluation/Assessment."]}
 };
 
 var ABOUT_SUBPAGES = [
- {id:"about-college",title:"About College"},
- {id:"about-sanstha",title:"About Sanstha"},
- {id:"vision-mission",title:"Vision & Mission"},
- {id:"emblem",title:"The College Emblem"},
- {id:"fourfold",title:"Four Fold Administration"},
- {id:"governing-council",title:"Governing Council"},
- {id:"cdc",title:"CDC"},
- {id:"school-committee",title:"School Committee"},
- {id:"org-chart",title:"Organizational Chart"},
- {id:"code-of-conduct",title:"Code of Conduct"},
- {id:"environment",title:"Environment Consciousness"}
+ {id:"about-college",title:"About College"},{id:"about-sanstha",title:"About Sanstha"},{id:"vision-mission",title:"Vision & Mission"},{id:"emblem",title:"The College Emblem"},{id:"fourfold",title:"Four Fold Administration"},{id:"governing-council",title:"Governing Council"},{id:"cdc",title:"CDC"},{id:"school-committee",title:"School Committee"},{id:"org-chart",title:"Organizational Chart"},{id:"code-of-conduct",title:"Code of Conduct"},{id:"environment",title:"Environment Consciousness"}
 ];
 
 var CONTACT_DEFAULT = {
-  name:"Janata Education Society's Ajara Mahavidyalaya, Ajara",
-  address:"Ajara: 416505, Taluka: Ajara, District: Kolhapur, Maharashtra, INDIA",
-  phone:"(02323)-246372",
-  email:"",
-  mapUrl:"https://maps.app.goo.gl/ZdL1YjyGbJKVUwYk9?g_st=ic",
-  facebook:"https://www.facebook.com/Ajara-College-1412033439013709/",
-  twitter:"https://twitter.com/",
-  linkedin:"https://in.linkedin.com/",
-  youtube:"https://www.youtube.com/"
+  name:"Janata Education Society's Ajara Mahavidyalaya, Ajara",address:"Ajara: 416505, Taluka: Ajara, District: Kolhapur, Maharashtra, INDIA",phone:"(02323)-246372",email:"",mapUrl:"https://maps.app.goo.gl/ZdL1YjyGbJKVUwYk9?g_st=ic",facebook:"https://www.facebook.com/Ajara-College-1412033439013709/",twitter:"",linkedin:"",youtube:""
 };
 
 var LIBRARY_BLOG = "https://amalibrary16.wordpress.com/";
-
 var NAAC_DOC_TITLES = ["NAAC SSR","IQAC Meeting","IIQA 2019","Undertaking","Self Declaration","AQAR 2020-2021","AQAR 2021-2022","AQAR 2022-2023","AQAR 2023-2024","Academic Audit Reports"];
-
 var FACILITIES_LIST = ["Research Cell","Network Resource Centre","Women's Hostel","Audio Visual Facilities","Resources Available for Divyangjan"];
 
-/* ============================================================
-   GENERIC STORAGE
-   ============================================================ */
 function loadStore(key, initial){
   try{
     var raw = localStorage.getItem(key);
@@ -598,8 +507,7 @@ function nowIso(){ return new Date().toISOString(); }
 var INITIAL_HERO = HERO_IMAGES.map(function(src,i){ return {id:uid('hero'), image:src, order:i+1, published:true}; });
 
 var DB = {
-  var DB = {
-  hero: loadStore("ajaramahavidyalaya_hero_v2", INITIAL_HERO),
+  hero: loadStore("ajaramahavidyalaya_hero", INITIAL_HERO),
   news: loadStore("ajaramahavidyalaya_news", INITIAL_NEWS),
   videos: loadStore("ajaramahavidyalaya_videos", INITIAL_VIDEOS),
   gallery: loadStore("ajaramahavidyalaya_gallery", INITIAL_GALLERY),
@@ -611,12 +519,7 @@ var DB = {
   rti: loadStore("ajaramahavidyalaya_rti", []),
   supportLinks: loadStore("ajaramahavidyalaya_support_links", [
     {id:uid('sl'),title:"Examination",description:"Examination notices and schedules.",order:1,published:true},
-    {id:uid('sl'),title:"Scholarships",description:"Scholarship information and eligibility.",order:2,published:true},
-    {id:uid('sl'),title:"Career Guidance",description:"Career guidance and resources.",order:3,published:true},
-    {id:uid('sl'),title:"Placement Support",description:"Career and placement support.",order:4,published:true},
-    {id:uid('sl'),title:"Student Welfare",description:"Student welfare initiatives and facilities.",order:5,published:true},
-    {id:uid('sl'),title:"Grievance / Feedback",description:"Submit concerns or feedback.",order:6,published:true},
-    {id:uid('sl'),title:"Anti-Ragging",description:"Official anti-ragging information.",order:7,published:true}
+    {id:uid('sl'),title:"Scholarships",description:"Scholarship information and eligibility.",order:2,published:true}
   ]),
   contact: loadStore("ajaramahavidyalaya_contact", CONTACT_DEFAULT),
   activity: loadStore("ajaramahavidyalaya_admin_activity", [])
@@ -645,17 +548,11 @@ function fmtDate(d){
   var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
   return dt.getDate()+" "+months[dt.getMonth()]+" "+dt.getFullYear();
 }
-function isValidUrl(u){
-  if(!u) return false;
-  return /^https?:\/\//i.test(u);
-}
 function extractYouTubeId(url){
   if(!url) return "";
   var m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
   return m ? m[1] : "";
 }
-function ytThumb(id){ return id ? "https://img.youtube.com/vi/"+id+"/maxresdefault.jpg" : ""; }
-function ytThumbFallback(id){ return id ? "https://img.youtube.com/vi/"+id+"/hqdefault.jpg" : ""; }
 
 function toast(msg){
   var wrap = document.getElementById("toastWrap");
@@ -671,7 +568,7 @@ function openModal(html){
 function closeModal(){ document.getElementById("modalOverlay").classList.remove("open"); }
 document.getElementById("modalOverlay").addEventListener("click", function(e){ if(e.target.id==="modalOverlay") closeModal(); });
 function confirmModal(msg, onYes){
-  openModal('<h3>'+esc(msg)+'</h3><div class="modal-actions"><button class="btn outline sm" id="mCancel">Cancel</button><button class="btn sm" id="mYes" style="background:#c0392b;border-color:#c0392b">Delete</button></div>');
+  openModal('<h3>'+esc(msg)+'</h3><div class="modal-actions"><button class="btn outline sm" id="mCancel">Cancel</button><button class="btn sm" id="mYes" style="background:#c0392b;border-color:#c0392b">Confirm</button></div>');
   document.getElementById("mCancel").onclick = closeModal;
   document.getElementById("mYes").onclick = function(){ closeModal(); onYes(); };
 }
@@ -682,13 +579,10 @@ function imgFallbackAttr(){
 /* ============================================================
    ROUTER
    ============================================================ */
-var routes = {};
-function route(pattern, handler){ routes[pattern]=handler; }
 function parseHash(){
   var h = location.hash || "#/home";
   h = h.replace(/^#/,"");
-  var parts = h.split("/").filter(Boolean);
-  return parts;
+  return h.split("/").filter(Boolean);
 }
 function navigate(hash){ location.hash = hash; }
 
@@ -726,7 +620,6 @@ function renderRoute(){
     case "principal-desk": renderDeskDetail(main, PRINCIPAL); break;
     case "chairman-desk": renderDeskDetail(main, CHAIRMAN); break;
     case "activity": renderActivityDetail(parts, main); break;
-    case "search": renderSearchPage(main); break;
     default: render404(main);
   }
   initReveal();
@@ -754,15 +647,14 @@ function render404(main){
 }
 
 /* ============================================================
-   NAV / HEADER / DRAWER
+   NAV / HEADER / FOOTER
    ============================================================ */
 function buildNav(){
   var list = document.getElementById("navList");
   var dlist = document.getElementById("drawerList");
-  list.innerHTML = NAV_ITEMS.map(function(n){ return '<li><a href="'+n.route+'" data-seg="'+segOf(n.route)+'">'+esc(n.label)+'</a></li>'; }).join("");
-  dlist.innerHTML = NAV_ITEMS.map(function(n){ return '<li><a href="'+n.route+'" data-seg="'+segOf(n.route)+'">'+esc(n.label)+'</a></li>'; }).join("");
+  list.innerHTML = NAV_ITEMS.map(function(n){ return '<li><a href="'+n.route+'" data-seg="'+n.route.replace("#/","").split("/")[0]+'">'+esc(n.label)+'</a></li>'; }).join("");
+  dlist.innerHTML = NAV_ITEMS.map(function(n){ return '<li><a href="'+n.route+'" data-seg="'+n.route.replace("#/","").split("/")[0]+'">'+esc(n.label)+'</a></li>'; }).join("");
 }
-function segOf(route){ return route.replace("#/","").split("/")[0]; }
 function highlightNav(seg){
   document.querySelectorAll('#navList a, #drawerList a').forEach(function(a){
     a.classList.toggle("active", a.getAttribute("data-seg")===seg);
@@ -778,37 +670,43 @@ document.getElementById("drawerCloseBtn").onclick = closeDrawer;
 overlay.onclick = closeDrawer;
 drawer.addEventListener("click", function(e){ if(e.target.tagName==="A") closeDrawer(); });
 
-/* ============================================================
-   SEARCH
-   ============================================================ */
-function buildSearchIndex(){
-  var idx = [];
-  idx.push({cat:"Page",title:"About Us",excerpt:"History, vision, mission and governance of the college.",href:"#/about"});
-  ABOUT_SUBPAGES.forEach(function(s){ idx.push({cat:"About Us",title:s.title,excerpt:"About Us section.",href:"#/about/"+s.id}); });
-  idx.push({cat:"Page",title:"Principal's Desk",excerpt:PRINCIPAL.name,href:"#/principal-desk"});
-  idx.push({cat:"Page",title:"Chairman's Desk",excerpt:CHAIRMAN.name,href:"#/chairman-desk"});
-  Object.keys(PROGRAMMES).forEach(function(k){ idx.push({cat:"Programme",title:PROGRAMMES[k].title,excerpt:PROGRAMMES[k].intro||"",href:"#/programme/"+k}); });
-  ACTIVITIES.forEach(function(a){ idx.push({cat:"Student Life",title:a.title,excerpt:a.desc,href:"#/activity/"+a.id}); });
-  DB.news.filter(function(n){return n.published;}).forEach(function(n){ idx.push({cat:n.category||"News",title:n.title,excerpt:n.excerpt||"",href:"#/news/"+n.id}); });
-  DB.videos.filter(function(v){return v.published;}).forEach(function(v){ idx.push({cat:"Video",title:v.title,excerpt:v.description||"",href:"#/videos"}); });
-  DB.gallery.collections.forEach(function(c){ idx.push({cat:"Photo Gallery",title:c.title,excerpt:"Academic year photo collection.",href:"#/gallery/"+c.id}); });
-  DB.faculty.filter(function(f){return f.published;}).forEach(function(f){ idx.push({cat:"Faculty",title:f.name,excerpt:(f.designation||"")+" — "+(f.department||""),href:"#/faculty/"+f.id}); });
-  DB.facilities.filter(function(f){return f.published;}).forEach(function(f){ idx.push({cat:"Facilities",title:f.name,excerpt:f.shortDesc||"",href:"#/facilities/"+f.id}); });
-  DB.alumni.filter(function(a){return a.published;}).forEach(function(a){ idx.push({cat:"Alumni",title:a.name,excerpt:(a.profession||"")+" — "+(a.year||""),href:"#/alumni"}); });
-  DB.blog.filter(function(b){return b.published;}).forEach(function(b){ idx.push({cat:"Blog",title:b.title,excerpt:b.excerpt||"",href:"#/blog/"+b.id}); });
-  DB.naac.filter(function(n){return n.published;}).forEach(function(n){ idx.push({cat:"NAAC",title:n.title,excerpt:n.description||"",href:"#/naac"}); });
-  DB.rti.filter(function(r){return r.published;}).forEach(function(r){ idx.push({cat:"RTI",title:r.title,excerpt:r.description||"",href:"#/rti"}); });
-  DB.supportLinks.filter(function(s){return s.published;}).forEach(function(s){ idx.push({cat:"Student Support",title:s.title,excerpt:s.description||"",href:"#/student-support"}); });
-  idx.push({cat:"Library",title:"Library",excerpt:"Resources, rules, digital resources and library blog.",href:"#/library"});
-  idx.push({cat:"Contact",title:"Contact Us",excerpt:DB.contact.address,href:"#/contact"});
-  return idx;
+function renderFooter(){
+  var c = DB.contact;
+  var html = '<div class="container"><div class="footer-grid">'+
+    '<div><img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="Logo" style="width:60px;margin-bottom:14px;filter:brightness(1.5);">'+
+    '<h4 style="margin-bottom:8px">Ajara Mahavidyalaya</h4><p style="color:#d8d8dc;font-size:.85rem;line-height:1.6">'+esc(c.address)+'</p>'+
+    '<p style="color:#d8d8dc;font-size:.85rem;margin-top:10px">Phone: '+esc(c.phone)+'<br>Email: '+(c.email?esc(c.email):'N/A')+'</p>'+
+    '<div class="foot-social">'+(c.facebook?'<a href="'+esc(c.facebook)+'" target="_blank" rel="noopener">f</a>':'')+(c.youtube?'<a href="'+esc(c.youtube)+'" target="_blank" rel="noopener">yt</a>':'')+'</div></div>'+
+    '<div><h4>Quick Links</h4><a href="#/home">Home</a><a href="#/about">About Us</a><a href="#/programme">Programmes</a><a href="#/faculty">Faculty</a><a href="#/news">News & Events</a></div>'+
+    '<div><h4>Support</h4><a href="#/student-support">Student Support</a><a href="#/alumni">Alumni</a><a href="#/library">Library</a><a href="#/feedback">Feedback</a><a href="#/contact">Contact Us</a></div>'+
+    '<div><h4>Information</h4><a href="#/naac">NAAC</a><a href="#/rti">RTI</a><a href="#/facilities">Facilities</a><a href="#/admin" style="color:var(--ink-soft);margin-top:10px;font-size:0.7rem">Admin Login</a></div>'+
+    '</div><div class="foot-bottom">&copy; '+(new Date().getFullYear())+' Janata Education Society\'s Ajara Mahavidyalaya. All rights reserved.</div></div>';
+  document.getElementById("siteFooter").innerHTML = html;
 }
+renderFooter();
+
 var searchPanel=document.getElementById("searchPanel"), searchInput=document.getElementById("searchInput");
 function openSearch(){ searchPanel.classList.add("open"); setTimeout(function(){searchInput.focus();},50); renderSearchResults(""); }
 function closeSearch(){ searchPanel.classList.remove("open"); }
 document.getElementById("searchOpenBtn").onclick = openSearch;
 document.getElementById("searchCloseBtn").onclick = closeSearch;
 searchInput.addEventListener("input", function(){ renderSearchResults(searchInput.value); });
+function buildSearchIndex(){
+  var idx = [
+    {cat:"Page",title:"About Us",excerpt:"History, vision, mission and governance of the college.",href:"#/about"},
+    {cat:"Page",title:"Principal's Desk",excerpt:PRINCIPAL.name,href:"#/principal-desk"},
+    {cat:"Page",title:"Chairman's Desk",excerpt:CHAIRMAN.name,href:"#/chairman-desk"}
+  ];
+  ABOUT_SUBPAGES.forEach(function(s){ idx.push({cat:"About Us",title:s.title,excerpt:"About Us section.",href:"#/about/"+s.id}); });
+  Object.keys(PROGRAMMES).forEach(function(k){ idx.push({cat:"Programme",title:PROGRAMMES[k].title,excerpt:PROGRAMMES[k].intro||"",href:"#/programme/"+k}); });
+  ACTIVITIES.forEach(function(a){ idx.push({cat:"Student Life",title:a.title,excerpt:a.desc,href:"#/activity/"+a.id}); });
+  DB.news.filter(function(n){return n.published;}).forEach(function(n){ idx.push({cat:n.category||"News",title:n.title,excerpt:n.excerpt||"",href:"#/news/"+n.id}); });
+  DB.videos.filter(function(v){return v.published;}).forEach(function(v){ idx.push({cat:"Video",title:v.title,excerpt:v.description||"",href:"#/videos"}); });
+  DB.gallery.collections.forEach(function(c){ idx.push({cat:"Photo Gallery",title:c.title,excerpt:"Academic year photo collection.",href:"#/gallery/"+c.id}); });
+  idx.push({cat:"Library",title:"Library",excerpt:"Resources, rules, digital resources and library blog.",href:"#/library"});
+  idx.push({cat:"Contact",title:"Contact Us",excerpt:DB.contact.address,href:"#/contact"});
+  return idx;
+}
 function renderSearchResults(q){
   var res = document.getElementById("searchResults");
   q = (q||"").trim().toLowerCase();
@@ -817,13 +715,10 @@ function renderSearchResults(q){
   if(!q){ res.innerHTML = '<div class="empty-state">Start typing to search pages, programmes, faculty, news, facilities and more.</div>'; return; }
   if(!matches.length){ res.innerHTML = '<div class="empty-state">No results found.<br>Try another keyword or search for a department, programme, facility or notice.</div>'; return; }
   res.innerHTML = matches.slice(0,30).map(function(m){
-    return '<a class="result-item" href="'+m.href+'"><span class="cat">'+esc(m.cat)+'</span><h4>'+esc(m.title)+'</h4><p>'+esc((m.excerpt||"").slice(0,110))+'</p></a>';
+    return '<a class="result-item" href="'+m.href+'" onclick="closeSearch()"><span class="cat">'+esc(m.cat)+'</span><h4>'+esc(m.title)+'</h4><p>'+esc((m.excerpt||"").slice(0,110))+'</p></a>';
   }).join("");
 }
 
-/* ============================================================
-   SCROLL REVEAL
-   ============================================================ */
 var observer;
 function initReveal(){
   var els = document.querySelectorAll(".reveal:not(.in)");
@@ -839,16 +734,7 @@ function initReveal(){
    HOME PAGE
    ============================================================ */
 function renderHome(main){
-  var html = "";
-  html += heroHtml();
-  html += programmeSectionHtml();
-  html += deskSectionHtml(PRINCIPAL,"principal-desk",false);
-  html += deskSectionHtml(CHAIRMAN,"chairman-desk",true);
-  html += studentLifeSectionHtml();
-  html += newsHomeSectionHtml();
-  html += videoHomeSectionHtml();
-  html += galleryHomeSectionHtml();
-  html += visitSectionHtml();
+  var html = heroHtml() + programmeSectionHtml() + deskSectionHtml(PRINCIPAL,"principal-desk",false) + deskSectionHtml(CHAIRMAN,"chairman-desk",true) + studentLifeSectionHtml() + newsHomeSectionHtml() + videoHomeSectionHtml() + galleryHomeSectionHtml() + visitSectionHtml();
   main.innerHTML = html;
   initHeroSlider();
 }
@@ -885,11 +771,7 @@ function initHeroSlider(){
   document.getElementById("heroNext").onclick=function(){ next(); restart(); };
   document.getElementById("heroPrev").onclick=function(){ show(i-1); restart(); };
   dots.forEach(function(d){ d.onclick=function(){ show(parseInt(d.dataset.i,10)); restart(); }; });
-  // FIX: only pause-on-hover for real mouse/pointer devices. On touch
-  // devices, "mouseenter" fires on tap but "mouseleave" often never
-  // fires, which used to freeze the slideshow permanently after the
-  // first tap. We now gate this behind a hover-capability check, and
-  // also explicitly resume the timer after any touch interaction.
+  
   var heroEl = document.getElementById("heroSection");
   if(matchMedia('(hover: hover)').matches){
     heroEl.addEventListener("mouseenter", function(){ clearInterval(timer); });
@@ -899,16 +781,15 @@ function initHeroSlider(){
     var next = document.getElementById("heroSection").nextElementSibling;
     if(next) next.scrollIntoView({behavior:(matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth')});
   };
-  // touch swipe
+  
   var startX=null;
-  hero=document.getElementById("heroSection");
-  hero.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; }, {passive:true});
-  hero.addEventListener("touchend", function(e){
+  heroEl.addEventListener("touchstart", function(e){ startX=e.touches[0].clientX; }, {passive:true});
+  heroEl.addEventListener("touchend", function(e){
     if(startX===null) return;
     var dx = e.changedTouches[0].clientX - startX;
     if(dx>40){ show(i-1); restart(); }
     else if(dx<-40){ next(); restart(); }
-    else { restart(); } // plain tap: make sure autoplay keeps running
+    else { restart(); } 
     startX=null;
   });
 }
@@ -979,8 +860,16 @@ function videoHomeSectionHtml(){
     '<div class="grid video-grid">'+cards+'</div>'+
     '<div style="text-align:center;margin-top:26px"><a href="#/videos" class="btn outline">View All Videos &rarr;</a></div></div></section>';
 }
+window.openVideo = function(id){
+  document.getElementById('videoFrame').src = 'https://www.youtube.com/embed/'+id+'?autoplay=1';
+  document.getElementById('videoModal').classList.add('open');
+};
+document.getElementById('videoModalClose').onclick = function(){
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('videoFrame').src = '';
+};
 function videoCardHtml(v){
-  return '<div class="card video-card reveal" onclick="AjaraApp.openVideo(\''+v.videoId+'\',\''+esc(v.title).replace(/'/g,"&#39;")+'\')">'+
+  return '<div class="card video-card reveal" onclick="window.openVideo(\''+v.videoId+'\')">'+
     '<div class="video-thumb"><img src="'+v.thumbnail+'" alt="'+esc(v.title)+' thumbnail" loading="lazy" '+imgFallbackAttr()+'><span class="play-ic"><span>&#9658;</span></span></div>'+
     '<div class="body"><h3 style="font-size:.95rem">'+esc(v.title)+'</h3></div></div>';
 }
@@ -1012,7 +901,7 @@ function visitSectionHtml(){
 }
 
 /* ============================================================
-   PRINCIPAL / CHAIRMAN DETAIL
+   INNER PAGES
    ============================================================ */
 function renderDeskDetail(main, person){
   main.innerHTML = pageHero(person.role+"'s Desk", [{label:"Home",href:"#/home"},{label:"About Us",href:"#/about"},{label:person.role+"'s Desk"}])+
@@ -1025,9 +914,6 @@ function renderDeskDetail(main, person){
    '</section>';
 }
 
-/* ============================================================
-   ACTIVITY DETAIL
-   ============================================================ */
 function renderActivityDetail(parts, main){
   var id = parts[1];
   var a = ACTIVITIES.filter(function(x){return x.id===id;})[0];
@@ -1042,9 +928,6 @@ function renderActivityDetail(parts, main){
    '</section>';
 }
 
-/* ============================================================
-   ABOUT US
-   ============================================================ */
 function renderAboutRoute(parts, main){
   if(parts[1]){ return renderAboutSub(parts[1], main); }
   var cards = ABOUT_SUBPAGES.map(function(s){
@@ -1059,19 +942,21 @@ function renderAboutRoute(parts, main){
    '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:30px">'+cards+'</div>'+
    '</section>';
 }
+
 var ABOUT_CONTENT = {
-  "about-college":"Ajara Mahavidyalaya was established in 1982 by Janata Education Society, Ajara to bring higher education to the rural, hilly and remote Ajara Taluka on the border of Maharashtra and Karnataka. The college offers UG and PG education in Arts, Commerce and Science, along with Computer Science and BCA, and supports students through a wide range of co-curricular and extracurricular activities for all-round development.",
-  "about-sanstha":"Janata Education Society, Ajara is the parent management body that established and continues to support Ajara Mahavidyalaya. Detailed information about the Sanstha will be updated by the college administration.",
+  "about-college":"Ajara Mahavidyalaya was established in 1982 by Janata Education Society, Ajara to bring higher education to the rural, hilly and remote Ajara Taluka on the border of Maharashtra and Karnataka...",
+  "about-sanstha":"Janata Education Society, Ajara is the parent management body that established and continues to support Ajara Mahavidyalaya...",
   "vision-mission":"__VM__",
   "emblem":"__EMBLEM__",
   "fourfold":"__FOURFOLD__",
   "governing-council":"Official governing council member information will be updated here by the college administration.",
-  "cdc":"The College Development Committee (CDC) focuses on institutional development, infrastructure planning, academic development, student welfare and quality improvement. Detailed committee information will be updated by the administration.",
+  "cdc":"The College Development Committee (CDC) focuses on institutional development, infrastructure planning, academic development, student welfare and quality improvement.",
   "school-committee":"School Committee information will be updated here by the college administration.",
   "org-chart":"__ORGCHART__",
   "code-of-conduct":"__CONDUCT__",
-  "environment":"Ajara Mahavidyalaya encourages environmental awareness, responsible resource use, cleanliness, sustainability and student participation in environmental education. Specific environmental initiatives will be updated by the administration."
+  "environment":"Ajara Mahavidyalaya encourages environmental awareness, responsible resource use, cleanliness, sustainability and student participation in environmental education."
 };
+
 function renderAboutSub(id, main){
   var page = ABOUT_SUBPAGES.filter(function(s){return s.id===id;})[0];
   if(!page){ render404(main); return; }
@@ -1082,937 +967,483 @@ function renderAboutSub(id, main){
     '<div class="card" style="padding:22px"><h3>Mission</h3><ul class="info-list"><li>Provide quality higher education</li><li>Support students from rural communities</li><li>Encourage academic development</li><li>Promote co-curricular and extracurricular participation</li><li>Encourage skill development</li><li>Support girl students</li><li>Develop responsible and confident students</li><li>Contribute to society and national development</li></ul></div></div>';
     body="";
   } else if(id==="emblem"){
-    special = '<img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="College emblem" style="width:140px;margin-bottom:16px" '+imgFallbackAttr()+'><p>Details about the symbolism and elements of the college emblem can be updated by the administration.</p>';
+    special = '<img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="College Emblem" style="width:150px;margin:20px auto;display:block;">'+
+              '<p style="text-align:center">The emblem represents the values and mission of Janata Education Society and Ajara Mahavidyalaya.</p>';
     body="";
-  } else if(id==="fourfold"){
-    var four=["Academic Administration","Student Support","Co-curricular & Extracurricular Activities","Institutional Administration"];
-    special='<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">'+four.map(function(f){return '<div class="card" style="padding:20px"><h4>'+f+'</h4><p style="font-size:.85rem;margin-top:6px">Function overview to be updated by the administration.</p></div>';}).join("")+'</div>';
-  } else if(id==="org-chart"){
-    var chain=["Management / Janata Education Society","Principal","Academic / Administrative Structure","Departments / Committees / Cells","Teaching / Non-Teaching / Support Staff","Students"];
-    special='<div style="max-width:420px;margin:0 auto">'+chain.map(function(c,i){return '<div class="card" style="padding:14px;text-align:center;margin-bottom:'+(i<chain.length-1?'6px':'0')+'">'+c+'</div>'+(i<chain.length-1?'<div style="text-align:center;color:var(--accent-dark);font-weight:700">&#8595;</div>':'');}).join("")+'</div><p class="helper-text" style="text-align:center;margin-top:14px">This is an illustrative hierarchy; the official organizational chart will be supplied by the administration.</p>';
-  } else if(id==="code-of-conduct"){
-    var rules=["Academic discipline","Respectful behaviour","Attendance","Examination discipline","Responsible use of college facilities","Maintaining campus cleanliness","Respectful digital/social behaviour","Following institutional rules"];
-    special='<ul class="info-list">'+rules.map(function(r){return '<li>'+r+'</li>';}).join("")+'</ul><p class="helper-text" style="margin-top:10px">These are general institutional guidelines; the official Code of Conduct document will be published by the administration.</p>';
+  } else if(id==="fourfold" || id==="org-chart" || id==="code-of-conduct") {
+    special = '<div class="empty-state">Information regarding '+esc(page.title)+' will be updated shortly by the college administration.</div>';
+    body="";
   }
-  main.innerHTML = pageHero(page.title,[{label:"Home",href:"#/home"},{label:"About Us",href:"#/about"},{label:page.title}])+
-   '<section class="section container reveal in" style="max-width:800px">'+(body?('<p>'+esc(body)+'</p>'):'')+special+
-   '<a href="#/about" class="btn outline sm" style="margin-top:24px">&larr; Back to About Us</a></section>';
+  
+  main.innerHTML = pageHero(page.title, [{label:"Home",href:"#/home"},{label:"About Us",href:"#/about"},{label:page.title}]) +
+    '<section class="section container reveal in">' +
+    (body ? '<p style="max-width:800px;margin-bottom:20px">'+esc(body)+'</p>' : '') + special +
+    '<br><a href="#/about" class="btn outline sm" style="margin-top:20px">&larr; Back to About Us</a>'+
+    '</section>';
 }
 
-/* ============================================================
-   PROGRAMME
-   ============================================================ */
 function renderProgrammeRoute(parts, main){
-  if(!parts[1]){
-    return renderHome === main ? null : (function(){
-      var icons={science:"Sc",commerce:"Co",arts:"Ar",bca:"BCA",mcom:"MC",ma:"MA"};
-      var cards = Object.keys(PROGRAMMES).map(function(k){
-        return '<a href="#/programme/'+k+'" class="card prog-card reveal"><span class="ic">'+icons[k]+'</span><h3>'+PROGRAMMES[k].title+'</h3><span class="go">Explore Programme &rarr;</span></a>';
-      }).join("");
-      main.innerHTML = pageHero("Programme",[{label:"Home",href:"#/home"},{label:"Programme"}])+
-       '<section class="section container"><div class="grid prog-grid">'+cards+'</div></section>';
-    })();
+  var id = parts[1];
+  if(!id) {
+    main.innerHTML = pageHero("Programmes We Offer", [{label:"Home",href:"#/home"},{label:"Programme"}]) + programmeSectionHtml();
+    return;
   }
-  var key = parts[1];
-  var p = PROGRAMMES[key];
-  if(!p){ render404(main); return; }
-  var body = "";
+  
+  var p = PROGRAMMES[id];
+  if(!p) { render404(main); return; }
+  
+  var html = pageHero(p.title + (p.subtitle ? " - " + p.subtitle : ""), [{label:"Home",href:"#/home"},{label:"Programme",href:"#/programme"},{label:p.title}])+
+    '<section class="section container reveal in"><p style="font-size:1.1rem;margin-bottom:30px;max-width:800px">'+esc(p.intro)+'</p>';
+    
   if(p.parts){
-    body = p.parts.map(function(part, i){
-      var inner="";
-      if(part.compulsory) inner += '<div class="subject-group"><h4>Compulsory Subjects</h4><div class="subject-tags">'+part.compulsory.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
-      if(part.optional) inner += '<div class="subject-group"><h4>Optional Subjects</h4><div class="subject-tags">'+part.optional.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
-      if(part.major) inner += '<div class="subject-group"><h4>Major Subject</h4><div class="subject-tags">'+part.major.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
-      if(part.minor) inner += '<div class="subject-group"><h4>Minor Subject</h4><div class="subject-tags">'+part.minor.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
-      if(part.other) inner += '<div class="subject-group"><h4>Also</h4><div class="subject-tags">'+part.other.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
-      return accordionItem(part.label, inner, i===0);
-    }).join("");
-  } else if(p.semesters){
-    body = p.semesters.map(function(s,i){
-      var inner = s.comingSoon ? '<p><b>Coming Soon &rarr;</b></p>' : '<div class="subject-tags">'+s.items.map(function(x){return '<span>'+esc(x)+'</span>';}).join("")+'</div>';
-      return accordionItem(s.label, inner, i===0);
-    }).join("");
-  } else if(p.tables){
-    body = p.tables.map(function(t,i){
-      var rows = t.rows.map(function(r){ return '<tr>'+r.map(function(c){return '<td>'+esc(c)+'</td>';}).join("")+'</tr>'; }).join("");
-      var inner = '<div class="table-scroll"><table class="acad"><thead><tr><th>Sr.</th><th>Type</th><th>Course Name</th><th>Code</th><th>Credits</th><th>Lectures</th><th>Hours</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
-        '<p class="helper-text" style="margin-top:8px"><b>Total:</b> '+esc(t.total)+'</p>';
-      return accordionItem(t.label, inner, i===0);
-    }).join("") + (p.notes ? '<div style="margin-top:20px"><h4 style="font-size:.9rem;color:var(--accent-dark)">Notes</h4><ul class="info-list">'+p.notes.map(function(n){return '<li>'+esc(n)+'</li>';}).join("")+'</ul></div>' : "");
-  }
-  main.innerHTML = pageHero(p.title,[{label:"Home",href:"#/home"},{label:"Programme",href:"#/programme"},{label:p.title}])+
-   '<section class="section container reveal in">'+
-   (p.subtitle?('<p class="eyebrow">'+esc(p.subtitle)+'</p>'):"")+
-   '<p style="max-width:760px">'+esc(p.intro||"")+'</p>'+
-   '<div style="margin-top:24px">'+body+'</div>'+
-   '<a href="#/programme" class="btn outline sm" style="margin-top:24px">&larr; Back to Programmes</a>'+
-   '</section>';
-  initAccordions();
-}
-function accordionItem(title, inner, open){
-  return '<div class="accordion-item'+(open?' open':'')+'"><button class="accordion-head">'+esc(title)+'<span>'+(open?'&#8722;':'&#43;')+'</span></button><div class="accordion-body"><div class="accordion-inner">'+inner+'</div></div></div>';
-}
-function initAccordions(){
-  document.querySelectorAll(".accordion-head").forEach(function(btn){
-    btn.onclick = function(){
-      var item = btn.parentElement;
-      item.classList.toggle("open");
-      btn.querySelector("span").innerHTML = item.classList.contains("open") ? "&#8722;" : "&#43;";
-    };
-  });
-}
-
-/* ============================================================
-   FACULTY
-   ============================================================ */
-function renderFacultyRoute(parts, main){
-  if(parts[1]) return renderFacultyDetail(parts[1], main);
-  var pub = DB.faculty.filter(function(f){return f.published;});
-  var depts = ["All"].concat(Array.from(new Set(pub.map(function(f){return f.department;}).filter(Boolean))));
-  var tabs = depts.map(function(d,i){ return '<button class="tab-btn'+(i===0?' active':'')+'" data-d="'+esc(d)+'">'+esc(d)+'</button>'; }).join("");
-  main.innerHTML = pageHero("Faculty",[{label:"Home",href:"#/home"},{label:"Faculty"}])+
-   '<section class="section container reveal in">'+
-   '<p style="max-width:700px;margin-bottom:20px">Meet the teaching staff of Ajara Mahavidyalaya.</p>'+
-   (pub.length? '<div class="tabs" id="facTabs">'+tabs+'</div>' : '')+
-   '<div class="grid" id="facultyGrid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))"></div>'+
-   '</section>';
-  function draw(dept){
-    var list = dept==="All" ? pub : pub.filter(function(f){return f.department===dept;});
-    var grid = document.getElementById("facultyGrid");
-    if(!list.length){ grid.innerHTML = '<div class="empty-state">Faculty information will be updated soon.</div>'; return; }
-    grid.innerHTML = list.map(function(f){
-      return '<a href="#/faculty/'+f.id+'" class="card reveal in" style="padding:18px;text-align:center">'+
-        '<img src="'+(f.photo||placeholderAvatar())+'" alt="'+esc(f.name)+'" style="width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 10px" '+imgFallbackAttr()+'>'+
-        '<h3 style="font-size:.95rem">'+esc(f.name)+'</h3><span class="helper-text">'+esc(f.designation||"")+'</span><br><span class="badge" style="margin-top:6px">'+esc(f.department||"")+'</span>'+
-        '<div style="margin-top:10px"><span class="go">View Profile &rarr;</span></div></a>';
-    }).join("");
-  }
-  draw("All");
-  if(document.getElementById("facTabs")){
-    document.getElementById("facTabs").addEventListener("click", function(e){
-      if(e.target.tagName!=="BUTTON") return;
-      document.querySelectorAll("#facTabs .tab-btn").forEach(function(b){b.classList.remove("active");});
-      e.target.classList.add("active"); draw(e.target.dataset.d);
+    p.parts.forEach(function(pt, i){
+      html += '<div class="accordion-item '+(i===0?'open':'')+'">'+
+        '<button class="accordion-head" onclick="this.parentElement.classList.toggle(\'open\')"><span>'+esc(pt.label)+'</span> <span>&#9662;</span></button>'+
+        '<div class="accordion-body"><div class="accordion-inner">';
+      if(pt.compulsory) html += '<div class="subject-group"><h4>Compulsory Subjects</h4><div class="subject-tags">'+pt.compulsory.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
+      if(pt.optional) html += '<div class="subject-group"><h4>Optional Subjects</h4><div class="subject-tags">'+pt.optional.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
+      if(pt.major) html += '<div class="subject-group"><h4>Major</h4><div class="subject-tags">'+pt.major.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
+      if(pt.minor) html += '<div class="subject-group"><h4>Minor</h4><div class="subject-tags">'+pt.minor.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
+      if(pt.other) html += '<div class="subject-group"><h4>Other</h4><div class="subject-tags">'+pt.other.map(function(s){return '<span>'+esc(s)+'</span>';}).join("")+'</div></div>';
+      html += '</div></div></div>';
     });
   }
-}
-function placeholderAvatar(){ return "data:image/svg+xml;utf8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100%" height="100%" fill="#FFEEDD"/><circle cx="50" cy="38" r="18" fill="#F97316"/><rect x="20" y="62" width="60" height="30" rx="15" fill="#F97316"/></svg>'); }
-function renderFacultyDetail(id, main){
-  var f = DB.faculty.filter(function(x){return x.id===id;})[0];
-  if(!f){ render404(main); return; }
-  var rows = [["Designation",f.designation],["Department",f.department],["Qualification",f.qualification],["Specialization",f.specialization],["Email",f.email],["Phone",f.phone]].filter(function(r){return r[1];});
-  main.innerHTML = pageHero(f.name,[{label:"Home",href:"#/home"},{label:"Faculty",href:"#/faculty"},{label:f.name}])+
-   '<section class="section container reveal in">'+
-   '<div class="desk"><img class="desk-photo" src="'+(f.photo||placeholderAvatar())+'" alt="'+esc(f.name)+'" '+imgFallbackAttr()+'>'+
-   '<div><h2 class="desk-name">'+esc(f.name)+'</h2>'+
-   '<ul class="info-list">'+rows.map(function(r){return '<li><b>'+r[0]+':</b> '+esc(r[1])+'</li>';}).join("")+'</ul>'+
-   (f.bio? '<p style="margin-top:12px">'+esc(f.bio)+'</p>':"")+
-   '</div></div>'+
-   '<a href="#/faculty" class="btn outline sm" style="margin-top:20px">&larr; Back to Faculty</a></section>';
+  if(p.semesters){
+    p.semesters.forEach(function(sem, i){
+      html += '<div class="accordion-item '+(i===0?'open':'')+'">'+
+        '<button class="accordion-head" onclick="this.parentElement.classList.toggle(\'open\')"><span>'+esc(sem.label)+'</span> <span>&#9662;</span></button>'+
+        '<div class="accordion-body"><div class="accordion-inner">';
+      if(sem.comingSoon) {
+         html += '<div class="empty-state" style="padding:20px">Syllabus will be updated soon.</div>';
+      } else if(sem.items) {
+         html += '<ul class="info-list" style="margin-top:10px">'+sem.items.map(function(it){return '<li>'+esc(it)+'</li>';}).join("")+'</ul>';
+      }
+      html += '</div></div></div>';
+    });
+  }
+  if(p.tables){
+    p.tables.forEach(function(tb){
+      html += '<h3 style="margin:30px 0 10px">'+esc(tb.label)+'</h3><div class="table-scroll"><table class="acad"><thead><tr><th>Sr.No.</th><th>Course Type</th><th>Course Name</th><th>Course Code</th><th>Credits</th><th>Lectures/Week</th><th>Hours/Week</th></tr></thead><tbody>';
+      tb.rows.forEach(function(r){
+        html += '<tr>'+r.map(function(td){return '<td>'+esc(td)+'</td>';}).join("")+'</tr>';
+      });
+      html += '</tbody></table></div>';
+      if(tb.total) html += '<p style="text-align:right;font-size:.85rem;font-weight:700;margin-top:6px">'+esc(tb.total)+'</p>';
+    });
+  }
+  if(p.notes){
+    html += '<div class="card" style="padding:20px;margin-top:30px;background:var(--accent-light);border:none;"><h4>Important Notes</h4><ul class="info-list" style="margin-top:10px">';
+    p.notes.forEach(function(n){ html += '<li>'+esc(n)+'</li>'; });
+    html += '</ul></div>';
+  }
+  
+  html += '<br><a href="#/programme" class="btn outline sm" style="margin-top:20px">&larr; All Programmes</a></section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   STUDENT SUPPORT
-   ============================================================ */
+function renderFacultyRoute(parts, main){
+  var pub = DB.faculty.filter(function(f){return f.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
+  var html = pageHero("Faculty Directory", [{label:"Home",href:"#/home"},{label:"Faculty"}])+
+   '<section class="section container reveal in">';
+  if(pub.length===0){
+    html += '<div class="empty-state">Faculty directory is being updated.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">';
+    pub.forEach(function(f){
+      html += '<div class="card" style="padding:24px;text-align:center"><div style="width:80px;height:80px;border-radius:50%;background:var(--line);margin:0 auto 16px;overflow:hidden"><img src="'+(f.photo||'https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821')+'" style="width:100%;height:100%;object-fit:cover" '+imgFallbackAttr()+'></div><h3 style="font-size:1.1rem">'+esc(f.name)+'</h3><p style="color:var(--accent-dark);font-weight:600;font-size:.85rem">'+esc(f.designation)+'</p><p style="font-size:.85rem">'+esc(f.department)+'</p>'+(f.qualifications?'<p style="font-size:.78rem;margin-top:6px">'+esc(f.qualifications)+'</p>':'')+'</div>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
+}
+
 function renderStudentSupportRoute(parts, main){
-  var pub = DB.supportLinks.filter(function(s){return s.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  var cards = pub.map(function(s){
-    return '<div class="card reveal" style="padding:20px"><h3 style="font-size:1rem">'+esc(s.title)+'</h3><p style="font-size:.85rem;margin-top:6px">'+esc(s.description||"")+'</p></div>';
-  }).join("") || '<div class="empty-state">Student support information will be updated soon.</div>';
-  main.innerHTML = pageHero("Student Support",[{label:"Home",href:"#/home"},{label:"Student Support"}])+
-   '<section class="section container">'+
-   '<p class="reveal in" style="max-width:700px;margin-bottom:20px">Academic and institutional support information for students, including examinations, scholarships, career guidance, placement, welfare, grievance and anti-ragging information.</p>'+
-   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">'+cards+'</div>'+
-   '<div style="margin-top:30px" class="card reveal" style="padding:20px"><h3>Anti-Ragging</h3><p style="margin-top:8px;font-size:.88rem">Official anti-ragging information will be updated here.</p></div>'+
-   '</section>';
+  var links = DB.supportLinks.filter(function(l){return l.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
+  var html = pageHero("Student Support", [{label:"Home",href:"#/home"},{label:"Student Support"}])+
+   '<section class="section container reveal in">';
+  if(links.length===0){
+    html += '<div class="empty-state">No support links available currently.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">';
+    links.forEach(function(l){
+      html += '<div class="card" style="padding:20px"><h3>'+esc(l.title)+'</h3><p style="font-size:.85rem;margin-top:6px">'+esc(l.description)+'</p><a href="#/contact" class="btn sm outline" style="margin-top:14px">Inquire &rarr;</a></div>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   FEEDBACK
-   ============================================================ */
 function renderFeedback(main){
-  main.innerHTML = pageHero("Feedback",[{label:"Home",href:"#/home"},{label:"Feedback"}])+
-   '<section class="section container reveal in" style="max-width:640px">'+
-   '<form id="feedbackForm">'+
-   field("Full Name","fname","text",true)+
-   field("Email","femail","email",true)+
-   selectField("Category","fcat",["Academic","Faculty","Administration","Library","Facilities","Student Support","Website","Other"])+
-   field("Message","fmsg","textarea",true)+
-   '<div id="feedbackMsg"></div>'+
-   '<button type="submit" class="btn" style="width:100%;justify-content:center">Submit Feedback</button>'+
-   '</form></section>';
-  document.getElementById("feedbackForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var name=document.getElementById("fname").value.trim();
-    var email=document.getElementById("femail").value.trim();
-    var msg=document.getElementById("fmsg").value.trim();
-    var box=document.getElementById("feedbackMsg");
-    if(!name || !validEmail(email) || !msg){ box.innerHTML='<p class="error-text">Please fill in your name, a valid email and a message.</p>'; return; }
-    if(!FORMSPREE_ENDPOINT){
-      box.innerHTML='<p class="helper-text">Feedback submission is currently being configured. Please contact the college through the Contact Us page.</p>';
-      return;
-    }
-    box.innerHTML='<p class="helper-text">Thank you. Your feedback has been submitted successfully.</p>';
-    e.target.reset();
-  });
+  main.innerHTML = pageHero("Feedback", [{label:"Home",href:"#/home"},{label:"Feedback"}])+
+    '<section class="section container reveal in"><div class="card" style="max-width:600px;margin:0 auto;padding:30px"><h3>Submit Feedback</h3><p style="margin-bottom:20px;font-size:.9rem">We value your suggestions and feedback.</p><form onsubmit="event.preventDefault();toast(\'Feedback submitted successfully.\');this.reset();"><div class="field"><label>Name</label><input type="text" required></div><div class="field"><label>Email or Phone</label><input type="text" required></div><div class="field"><label>Category</label><select required><option>Academic</option><option>Facilities</option><option>Administration</option><option>Other</option></select></div><div class="field"><label>Message</label><textarea rows="4" required></textarea></div><button type="submit" class="btn w-full" style="width:100%">Submit Feedback</button></form></div></section>';
 }
-function field(label,id,type,required){
-  if(type==="textarea") return '<div class="field"><label for="'+id+'">'+label+(required?' *':'')+'</label><textarea id="'+id+'" rows="5"'+(required?' required':'')+'></textarea></div>';
-  return '<div class="field"><label for="'+id+'">'+label+(required?' *':'')+'</label><input type="'+type+'" id="'+id+'"'+(required?' required':'')+'></div>';
-}
-function selectField(label,id,options){
-  return '<div class="field"><label for="'+id+'">'+label+'</label><select id="'+id+'">'+options.map(function(o){return '<option>'+o+'</option>';}).join("")+'</select></div>';
-}
-function validEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 
-/* ============================================================
-   ALUMNI
-   ============================================================ */
 function renderAlumni(main){
-  var pub = DB.alumni.filter(function(a){return a.published;});
-  var cards = pub.map(function(a){
-    return '<div class="card reveal" style="padding:18px;text-align:center">'+
-      '<img src="'+(a.photo||placeholderAvatar())+'" alt="'+esc(a.name)+'" style="width:76px;height:76px;border-radius:50%;object-fit:cover;margin:0 auto 10px" '+imgFallbackAttr()+'>'+
-      '<h3 style="font-size:.95rem">'+esc(a.name)+'</h3><span class="helper-text">'+esc(a.programme||"")+' &bull; '+esc(a.year||"")+'</span>'+
-      (a.description?('<p style="font-size:.82rem;margin-top:8px">'+esc(a.description)+'</p>'):"")+
-      '</div>';
-  }).join("") || '<div class="empty-state">Alumni information and activities will be updated here.</div>';
-  main.innerHTML = pageHero("Alumni",[{label:"Home",href:"#/home"},{label:"Alumni"}])+
-   '<section class="section container">'+
-   '<p class="reveal in" style="max-width:700px">Stay connected with your alma mater. Ajara Mahavidyalaya values the achievements and continued engagement of its alumni community.</p>'+
-   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:24px">'+cards+'</div>'+
-   '<div class="card reveal" style="padding:26px;margin-top:34px;max-width:640px">'+
-   '<h3>Alumni Registration</h3>'+
-   '<form id="alumniForm" style="margin-top:14px">'+
-   field("Full Name","aname","text",true)+field("Year of Passing","ayear","text",false)+
-   field("Programme / Course","aprog","text",false)+field("Email","aemail","email",true)+
-   field("Current Profession","aprof","text",false)+field("Message / Alumni Note","amsg","textarea",false)+
-   '<div id="alumniMsg"></div>'+
-   '<button type="submit" class="btn" style="width:100%;justify-content:center">Register</button></form></div>'+
-   '</section>';
-  document.getElementById("alumniForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var name=document.getElementById("aname").value.trim(), email=document.getElementById("aemail").value.trim();
-    var box=document.getElementById("alumniMsg");
-    if(!name||!validEmail(email)){ box.innerHTML='<p class="error-text">Please enter your name and a valid email.</p>'; return; }
-    if(!FORMSPREE_ENDPOINT){ box.innerHTML='<p class="helper-text">Alumni registration is currently being configured. Please contact the college through the Contact Us page.</p>'; return; }
-    box.innerHTML='<p class="helper-text">Thank you for registering.</p>'; e.target.reset();
-  });
+  var pub = DB.alumni.filter(function(a){return a.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
+  var html = pageHero("Alumni", [{label:"Home",href:"#/home"},{label:"Alumni"}])+
+   '<section class="section container reveal in"><div style="text-align:center;margin-bottom:40px"><p>Our alumni are our pride. They are contributing to society in various sectors across the globe.</p><a href="#/contact" class="btn sm" style="margin-top:14px">Register as Alumni</a></div>';
+  if(pub.length===0){
+    html += '<div class="empty-state">Alumni directory is currently being compiled.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">';
+    pub.forEach(function(a){
+      html += '<div class="card" style="padding:20px"><h4>'+esc(a.name)+'</h4><p style="color:var(--accent-dark);font-size:.85rem;font-weight:600">'+esc(a.profession)+'</p><p style="font-size:.85rem">Batch of '+esc(a.year)+'</p>'+(a.message?'<p style="font-size:.85rem;margin-top:10px;font-style:italic">"'+esc(a.message)+'"</p>':'')+'</div>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   LIBRARY
-   ============================================================ */
 function renderLibrary(main){
-  main.innerHTML = pageHero("Library",[{label:"Home",href:"#/home"},{label:"Library"}])+
-   '<section class="section container reveal in">'+
-   '<p style="max-width:700px">Supporting teaching, learning and academic exploration.</p>'+
-   '<div class="grid grid-2" style="margin-top:26px">'+
-   '<div class="card" style="padding:22px"><h3>Library Resources</h3><p style="margin-top:8px;font-size:.88rem">Books, journals, e-resources, reference material and question papers. Detailed listings will be updated by the administration.</p></div>'+
-   '<div class="card" style="padding:22px"><h3>Rules &amp; Regulations</h3><p style="margin-top:8px;font-size:.88rem">Borrowing rules, issue/return rules and reading-room instructions will be updated by the administration.</p></div>'+
-   '<div class="card" style="padding:22px"><h3>Working Hours</h3><p style="margin-top:8px;font-size:.88rem">Working hours will be updated by the administration.</p></div>'+
-   '<div class="card" style="padding:22px"><h3>Digital &amp; Useful Links</h3><p style="margin-top:8px;font-size:.88rem">Official digital resources will be listed here. Visit our <a href="'+LIBRARY_BLOG+'" target="_blank" rel="noopener noreferrer" style="color:var(--accent-dark);font-weight:700">Library Blog &rarr;</a></p></div>'+
-   '</div></section>';
+  main.innerHTML = pageHero("Library", [{label:"Home",href:"#/home"},{label:"Library"}])+
+    '<section class="section container reveal in"><div class="grid grid-2"><div class="card" style="padding:30px"><h3>About the Library</h3><p style="margin-top:10px">The college library serves as a hub of knowledge, providing students and faculty with access to textbooks, reference materials, journals, and digital resources.</p><h4 style="margin-top:20px;margin-bottom:10px">Resources</h4><ul class="info-list"><li>Extensive book collection</li><li>National and international journals</li><li>E-resources and INFLIBNET N-LIST access</li><li>Reading room facility</li><li>Reference section</li></ul></div><div class="card" style="padding:30px;background:var(--accent-light);border:none;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><h3>Library Blog</h3><p style="margin-top:10px">Visit our dedicated library blog for the latest updates, digital resources, book reviews, and academic links.</p><a href="'+esc(LIBRARY_BLOG)+'" target="_blank" rel="noopener" class="btn" style="margin-top:20px">Visit Library Blog &rarr;</a></div></div></section>';
 }
 
-/* ============================================================
-   NAAC
-   ============================================================ */
 function renderNaac(main){
   var pub = DB.naac.filter(function(n){return n.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  var cards = pub.map(function(d){
-    return '<div class="card reveal" style="padding:18px"><span class="badge">'+esc(d.category||"NAAC")+'</span><h3 style="font-size:.95rem;margin-top:8px">'+esc(d.title)+'</h3>'+
-      (d.year?('<span class="helper-text">'+esc(d.year)+'</span>'):'')+
-      (d.description?('<p style="font-size:.82rem;margin-top:6px">'+esc(d.description)+'</p>'):'')+
-      (d.url?('<a href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer" class="btn sm outline" style="margin-top:10px">View / Download &rarr;</a>'):'')+
-      '</div>';
-  }).join("") || '<div class="empty-state">NAAC documents and quality information will be updated here.</div>';
-  main.innerHTML = pageHero("NAAC",[{label:"Home",href:"#/home"},{label:"NAAC"}])+
-   '<section class="section container">'+
-   '<div class="reveal in"><span class="badge">Accredited at B by NAAC</span><br><span class="helper-text">Former Lead College Under Shivaji University Scheme</span></div>'+
-   '<h3 style="margin-top:24px">Internal Quality Assurance Cell (IQAC)</h3>'+
-   '<p style="margin-top:6px;max-width:700px">The IQAC coordinates quality initiatives, meetings and reports for the institution.</p>'+
-   '<h3 style="margin-top:26px">NAAC / IQAC Documents</h3>'+
-   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:14px">'+cards+'</div>'+
-   '</section>';
+  var html = pageHero("NAAC & IQAC", [{label:"Home",href:"#/home"},{label:"NAAC"}])+
+   '<section class="section container reveal in"><p style="max-width:800px;margin-bottom:30px">Internal Quality Assurance Cell (IQAC) and NAAC documentation of Ajara Mahavidyalaya.</p>';
+  if(pub.length===0){
+    html += '<div class="empty-state">Documents are currently being digitized and updated.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">';
+    pub.forEach(function(n){
+      html += '<div class="card" style="padding:20px;display:flex;align-items:center;justify-content:space-between"><div><h4 style="font-size:.95rem">'+esc(n.title)+'</h4>'+(n.year?'<span class="badge" style="margin-top:6px">'+esc(n.year)+'</span>':'')+'</div>'+(n.url?'<a href="'+esc(n.url)+'" target="_blank" class="btn sm outline">View</a>':'')+'</div>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   BLOG
-   ============================================================ */
 function renderBlogRoute(parts, main){
-  if(parts[1]) return renderBlogDetail(parts[1], main);
+  var id = parts[1];
   var pub = DB.blog.filter(function(b){return b.published;}).sort(function(a,b){return new Date(b.date)-new Date(a.date);});
-  var cards = pub.map(function(b){
-    return '<a href="#/blog/'+b.id+'" class="card news-card reveal">'+
-      '<img src="'+(b.coverImage||placeholderAvatar())+'" alt="'+esc(b.title)+'" loading="lazy" '+imgFallbackAttr()+'>'+
-      '<div class="body"><span class="badge">'+esc(b.category||"Blog")+'</span><h3>'+esc(b.title)+'</h3>'+
-      '<p style="font-size:.85rem">'+esc((b.excerpt||"").slice(0,100))+'</p></div></a>';
-  }).join("") || '<div class="empty-state">No blog posts available at the moment.</div>';
-  main.innerHTML = pageHero("Blog",[{label:"Home",href:"#/home"},{label:"Blog"}])+
-   '<section class="section container"><div class="grid news-grid">'+cards+'</div></section>';
-}
-function renderBlogDetail(id, main){
-  var b = DB.blog.filter(function(x){return x.id===id;})[0];
-  if(!b){ render404(main); return; }
-  main.innerHTML = pageHero(b.title,[{label:"Home",href:"#/home"},{label:"Blog",href:"#/blog"},{label:b.title}])+
-   '<section class="section container reveal in" style="max-width:760px">'+
-   '<span class="badge">'+esc(b.category||"Blog")+'</span> <span class="helper-text">'+fmtDate(b.date)+(b.author?(' &bull; '+esc(b.author)):'')+'</span>'+
-   (b.coverImage?('<img src="'+b.coverImage+'" alt="'+esc(b.title)+'" style="border-radius:14px;margin:16px 0" '+imgFallbackAttr()+'>'):'')+
-   '<h1 style="margin-top:6px">'+esc(b.title)+'</h1>'+
-   '<div style="margin-top:14px">'+nl2p(b.content)+'</div>'+
-   '<a href="#/blog" class="btn outline sm" style="margin-top:24px">&larr; Back to Blog</a></section>';
+  
+  if(id){
+    var b = pub.filter(function(x){return x.id===id;})[0];
+    if(!b){ render404(main); return; }
+    main.innerHTML = pageHero(b.title, [{label:"Home",href:"#/home"},{label:"Blog",href:"#/blog"},{label:"Article"}])+
+      '<section class="section container reveal in"><div style="max-width:800px;margin:0 auto"><span class="helper-text">Published on '+fmtDate(b.date)+' • By '+esc(b.author)+'</span>'+(b.image?'<img src="'+b.image+'" style="width:100%;border-radius:var(--radius);margin:20px 0" '+imgFallbackAttr()+'>':'')+'<div class="mr" style="font-size:1.05rem;line-height:1.8">'+nl2p(b.content)+'</div><a href="#/blog" class="btn outline sm" style="margin-top:30px">&larr; Back to Blog</a></div></section>';
+    return;
+  }
+  
+  var html = pageHero("College Blog", [{label:"Home",href:"#/home"},{label:"Blog"}])+
+   '<section class="section container reveal in">';
+  if(pub.length===0){
+    html += '<div class="empty-state">No blog posts available yet.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">';
+    pub.forEach(function(b){
+      html += '<a href="#/blog/'+b.id+'" class="card news-card"><div class="body"><span class="helper-text">'+fmtDate(b.date)+'</span><h3 class="mr" style="margin-top:6px">'+esc(b.title)+'</h3><p class="mr" style="margin-top:8px">'+esc((b.excerpt||"").slice(0,100))+'…</p><span style="color:var(--accent-dark);font-weight:600;font-size:.85rem;margin-top:14px;display:inline-block">Read Article &rarr;</span></div></a>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   FACILITIES
-   ============================================================ */
 function renderFacilitiesRoute(parts, main){
-  if(parts[1]) return renderFacilityDetail(parts[1], main);
+  var id = parts[1];
   var pub = DB.facilities.filter(function(f){return f.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  var cards = pub.map(function(f){
-    return '<a href="#/facilities/'+f.id+'" class="card reveal" style="padding:20px">'+
-      (f.image?('<img src="'+f.image+'" alt="'+esc(f.name)+'" style="border-radius:10px;height:130px;object-fit:cover;margin-bottom:12px" '+imgFallbackAttr()+'>'):'')+
-      '<h3 style="font-size:1rem">'+esc(f.name)+'</h3><p style="font-size:.85rem;margin-top:6px">'+esc(f.shortDesc||"")+'</p>'+
-      '<span class="go" style="margin-top:10px;display:inline-block">View More &rarr;</span></a>';
-  }).join("") || '<div class="empty-state">Facility information will be updated soon.</div>';
-  main.innerHTML = pageHero("Facilities",[{label:"Home",href:"#/home"},{label:"Facilities"}])+
-   '<section class="section container"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">'+cards+'</div>'+
-   '<div class="card reveal" style="padding:24px;margin-top:30px;text-align:center"><h3>Have a Question?</h3><p style="margin-top:6px">Contact Ajara Mahavidyalaya.</p><a href="#/contact" class="btn sm" style="margin-top:12px">Contact Us &rarr;</a></div>'+
-   '</section>';
-}
-function renderFacilityDetail(id, main){
-  var f = DB.facilities.filter(function(x){return x.id===id;})[0];
-  if(!f){ render404(main); return; }
-  main.innerHTML = pageHero(f.name,[{label:"Home",href:"#/home"},{label:"Facilities",href:"#/facilities"},{label:f.name}])+
-   '<section class="section container reveal in" style="max-width:760px">'+
-   (f.image?('<img src="'+f.image+'" alt="'+esc(f.name)+'" style="border-radius:14px;margin-bottom:16px" '+imgFallbackAttr()+'>'):'')+
-   '<p>'+esc(f.fullDesc || f.shortDesc || "Details will be updated by the college administration.")+'</p>'+
-   '<a href="#/facilities" class="btn outline sm" style="margin-top:20px">&larr; Back to Facilities</a></section>';
+  
+  if(id){
+    var f = pub.filter(function(x){return x.id===id;})[0];
+    if(!f){ render404(main); return; }
+    main.innerHTML = pageHero(f.name, [{label:"Home",href:"#/home"},{label:"Facilities",href:"#/facilities"},{label:f.name}])+
+      '<section class="section container reveal in"><div style="max-width:800px">'+(f.image?'<img src="'+f.image+'" style="width:100%;max-width:400px;border-radius:10px;margin-bottom:20px" '+imgFallbackAttr()+'>':'')+'<p style="font-size:1.05rem">'+esc(f.fullDesc || f.shortDesc)+'</p><a href="#/facilities" class="btn outline sm" style="margin-top:30px">&larr; All Facilities</a></div></section>';
+    return;
+  }
+
+  var html = pageHero("Facilities", [{label:"Home",href:"#/home"},{label:"Facilities"}])+
+   '<section class="section container reveal in"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">';
+  pub.forEach(function(f){
+    html += '<a href="#/facilities/'+f.id+'" class="card" style="padding:20px"><h3 style="font-size:1.1rem;margin-bottom:8px">'+esc(f.name)+'</h3><p style="font-size:.85rem">'+esc(f.shortDesc)+'</p><span style="color:var(--accent-dark);font-weight:600;font-size:.85rem;margin-top:10px;display:inline-block">Details &rarr;</span></a>';
+  });
+  html += '</div></section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   RTI
-   ============================================================ */
 function renderRti(main){
   var pub = DB.rti.filter(function(r){return r.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  var cards = pub.map(function(r){
-    return '<div class="card reveal" style="padding:16px"><h3 style="font-size:.95rem">'+esc(r.title)+'</h3>'+
-      (r.year?('<span class="helper-text">'+esc(r.year)+'</span>'):'')+
-      (r.description?('<p style="font-size:.82rem;margin-top:6px">'+esc(r.description)+'</p>'):'')+
-      (r.url?('<a href="'+esc(r.url)+'" target="_blank" rel="noopener noreferrer" class="btn sm outline" style="margin-top:8px">View Document &rarr;</a>'):'')+
-      '</div>';
-  }).join("") || '<div class="empty-state">RTI documents will be updated here.</div>';
-  main.innerHTML = pageHero("Right to Information (RTI)",[{label:"Home",href:"#/home"},{label:"RTI"}])+
-   '<section class="section container">'+
-   '<p class="reveal in" style="max-width:700px">Declaration under RTI Act 2005, Section 4(1)(b). Official Public Information Officer details will be updated here.</p>'+
-   '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:20px">'+cards+'</div>'+
-   '<p style="margin-top:24px">For further information, contact the college through the official Contact Us page.</p>'+
-   '<a href="#/contact" class="btn sm" style="margin-top:10px">Contact Us &rarr;</a>'+
-   '</section>';
+  var html = pageHero("Right to Information (RTI)", [{label:"Home",href:"#/home"},{label:"RTI"}])+
+   '<section class="section container reveal in"><p style="max-width:800px;margin-bottom:30px">Statutory Declaration under Section 4(1)(b) of Right to Information (RTI) Act, 2005.</p>';
+  if(pub.length===0){
+    html += '<div class="empty-state">RTI declarations are being updated. Please contact the college administration.</div>';
+  } else {
+    html += '<div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">';
+    pub.forEach(function(r){
+      html += '<div class="card" style="padding:20px"><h4>'+esc(r.title)+'</h4><p style="font-size:.85rem;margin:8px 0 14px">'+esc(r.description)+'</p>'+(r.url?'<a href="'+esc(r.url)+'" target="_blank" class="btn sm outline">Download Document</a>':'')+'</div>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   CONTACT
-   ============================================================ */
 function renderContact(main){
   var c = DB.contact;
-  main.innerHTML = pageHero("Contact Us",[{label:"Home",href:"#/home"},{label:"Contact Us"}])+
-   '<section class="section container"><div class="grid grid-2">'+
-   '<div class="reveal in">'+
-   '<h3>Contact Information</h3>'+
-   '<address style="font-style:normal;margin-top:12px;line-height:1.9">'+esc(c.name)+'<br>'+esc(c.address)+'<br>'+
-   'Phone: <a href="tel:'+esc(c.phone.replace(/[^\d+]/g,''))+'" style="color:var(--accent-dark);font-weight:700">'+esc(c.phone)+'</a></address>'+
-   '<a href="'+esc(c.mapUrl)+'" target="_blank" rel="noopener noreferrer" class="btn sm" style="margin-top:16px">View on Google Maps &rarr;</a>'+
-   '<div class="foot-social" style="margin-top:20px">'+
-   socialIcon(c.facebook,"f")+socialIcon(c.twitter,"x")+socialIcon(c.linkedin,"in")+socialIcon(c.youtube,"yt")+
-   '</div></div>'+
-   '<div class="card reveal" style="padding:24px">'+
-   '<form id="contactForm">'+
-   field("Full Name","cname","text",true)+field("Email","cemail","email",true)+field("Mobile","cmobile","text",false)+
-   field("Subject","csubject","text",false)+field("Message","cmsg","textarea",true)+
-   '<div id="contactMsg"></div>'+
-   '<button type="submit" class="btn" style="width:100%;justify-content:center">Send Message</button>'+
-   '</form></div></div></section>';
-  document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var name=document.getElementById("cname").value.trim(), email=document.getElementById("cemail").value.trim(), msg=document.getElementById("cmsg").value.trim();
-    var box=document.getElementById("contactMsg");
-    if(!name||!validEmail(email)||!msg){ box.innerHTML='<p class="error-text">Please fill your name, a valid email and a message.</p>'; return; }
-    if(!FORMSPREE_ENDPOINT){ box.innerHTML='<p class="helper-text">Unable to submit your message right now — the contact form backend is being configured. Please contact the college directly by phone.</p>'; return; }
-    box.innerHTML='<p class="helper-text">Thank you for contacting Ajara Mahavidyalaya. Your message has been submitted successfully.</p>'; e.target.reset();
-  });
-}
-function socialIcon(url, kind){
-  if(!url) return "";
-  var label={f:"Facebook",x:"Twitter",in:"LinkedIn",yt:"YouTube"}[kind];
-  return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" aria-label="'+label+'">'+label[0]+'</a>';
+  main.innerHTML = pageHero("Contact Us", [{label:"Home",href:"#/home"},{label:"Contact Us"}])+
+    '<section class="section container reveal in"><div class="grid grid-2"><div class="card" style="padding:30px"><h3>Get in Touch</h3><p style="margin-top:10px">'+esc(c.name)+'<br>'+esc(c.address)+'</p><p style="margin-top:14px"><b>Phone:</b> '+esc(c.phone)+'<br><b>Email:</b> '+(c.email?esc(c.email):'N/A')+'</p><a href="'+esc(c.mapUrl)+'" target="_blank" class="btn outline sm" style="margin-top:20px">View on Map</a></div>'+
+    '<div class="card" style="padding:30px"><h3>Send a Message</h3><form action="'+(FORMSPREE_ENDPOINT||'#')+'" method="POST" '+(FORMSPREE_ENDPOINT?'':'onsubmit="event.preventDefault();toast(\'Formspree endpoint not configured.\');"')+' style="margin-top:16px"><div class="field"><label>Your Name</label><input type="text" name="name" required></div><div class="field"><label>Your Email</label><input type="email" name="email" required></div><div class="field"><label>Message</label><textarea name="message" rows="4" required></textarea></div><button type="submit" class="btn">Send Message</button></form></div></div></section>';
 }
 
-/* ============================================================
-   NEWS
-   ============================================================ */
 function renderNewsRoute(parts, main){
-  if(parts[1]) return renderNewsDetail(parts[1], main);
-  var pub = DB.news.filter(function(n){return n.published;}).sort(function(a,b){
-    if(a.featured!==b.featured) return a.featured?-1:1;
-    return new Date(b.date)-new Date(a.date);
-  });
-  main.innerHTML = pageHero("News, Events & Notices",[{label:"Home",href:"#/home"},{label:"News, Events & Notices"}])+
-   '<section class="section container">'+
-   '<div class="tabs" id="newsTabs"><button class="tab-btn active" data-c="All">ALL</button><button class="tab-btn" data-c="News">NEWS</button><button class="tab-btn" data-c="Event">EVENTS</button><button class="tab-btn" data-c="Notice">NOTICES</button></div>'+
-   '<div class="grid news-grid" id="newsGrid"></div></section>';
-  function draw(cat){
-    var list = cat==="All" ? pub : pub.filter(function(n){return n.category===cat;});
-    var grid = document.getElementById("newsGrid");
-    grid.innerHTML = list.map(newsCardHtml).join("") || '<div class="empty-state">No news, events or notices are available at the moment.</div>';
+  var id = parts[1];
+  var pub = DB.news.filter(function(n){return n.published;}).sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  
+  if(id){
+    var n = pub.filter(function(x){return x.id===id;})[0];
+    if(!n){ render404(main); return; }
+    main.innerHTML = pageHero(n.title, [{label:"Home",href:"#/home"},{label:"News",href:"#/news"},{label:"Details"}])+
+      '<section class="section container reveal in"><div class="card" style="max-width:860px;margin:0 auto;overflow:hidden">'+(n.image?'<img src="'+n.image+'" style="width:100%;max-height:400px;object-fit:cover" '+imgFallbackAttr()+'>':'')+'<div style="padding:30px"><span class="badge">'+esc(n.category)+'</span><span class="helper-text" style="margin-left:10px">'+fmtDate(n.date)+'</span><h2 class="mr" style="margin:14px 0;font-size:1.6rem">'+esc(n.title)+'</h2><div class="mr" style="font-size:1.05rem;line-height:1.8">'+nl2p(n.content)+'</div><a href="#/news" class="btn outline sm" style="margin-top:30px">&larr; Back to News</a></div></div></section>';
+    return;
   }
-  draw("All");
-  document.getElementById("newsTabs").addEventListener("click", function(e){
-    if(e.target.tagName!=="BUTTON") return;
-    document.querySelectorAll("#newsTabs .tab-btn").forEach(function(b){b.classList.remove("active");});
-    e.target.classList.add("active"); draw(e.target.dataset.c);
-  });
-}
-function newsCardHtml(n){
-  return '<a href="#/news/'+n.id+'" class="card news-card reveal in">'+
-   '<img src="'+n.image+'" alt="'+esc(n.title)+'" loading="lazy" '+imgFallbackAttr()+'>'+
-   '<div class="body"><span class="badge">'+esc(n.category)+'</span> <span class="helper-text">'+fmtDate(n.date)+'</span>'+
-   '<h3 class="mr">'+esc(n.title)+'</h3><p class="mr" style="font-size:.83rem">'+esc((n.excerpt||"").slice(0,90))+'…</p>'+
-   '<span class="go">Read More &rarr;</span></div></a>';
-}
-function renderNewsDetail(id, main){
-  var n = DB.news.filter(function(x){return x.id===id;})[0];
-  if(!n || !n.published){ render404(main); return; }
-  main.innerHTML = pageHero(n.title,[{label:"Home",href:"#/home"},{label:"News, Events & Notices",href:"#/news"},{label:n.category}])+
-   '<section class="section container reveal in" style="max-width:760px">'+
-   '<span class="badge">'+esc(n.category)+'</span> <span class="helper-text">'+fmtDate(n.date)+'</span>'+
-   '<img src="'+n.image+'" alt="'+esc(n.title)+'" style="border-radius:14px;margin:16px 0" '+imgFallbackAttr()+'>'+
-   '<h1 class="mr" style="font-size:1.3rem">'+esc(n.title)+'</h1>'+
-   '<div class="mr" style="margin-top:14px">'+nl2p(n.content)+'</div>'+
-   '<a href="#/news" class="btn outline sm" style="margin-top:24px">&larr; Back to News</a></section>';
+  
+  var html = pageHero("News, Events & Notices", [{label:"Home",href:"#/home"},{label:"News"}])+
+   '<section class="section container reveal in">';
+  if(pub.length===0){
+    html += '<div class="empty-state">No news or updates currently available.</div>';
+  } else {
+    html += '<div class="grid news-grid">';
+    pub.forEach(function(n){
+      html += '<a href="#/news/'+n.id+'" class="card news-card">'+(n.image?'<img src="'+n.image+'" loading="lazy" '+imgFallbackAttr()+'>':'<div style="height:170px;background:var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-soft)">No Image</div>')+'<div class="body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px"><span class="badge">'+esc(n.category)+'</span><span class="helper-text">'+fmtDate(n.date)+'</span></div><h3 class="mr">'+esc(n.title)+'</h3><p class="mr" style="margin-top:auto;padding-top:10px;font-size:.85rem">'+esc((n.excerpt||"").slice(0,90))+'…</p></div></a>';
+    });
+    html += '</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
 
-/* ============================================================
-   VIDEOS
-   ============================================================ */
 function renderVideosPage(main){
   var vids = DB.videos.filter(function(v){return v.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  main.innerHTML = pageHero("Video Gallery",[{label:"Home",href:"#/home"},{label:"Video Gallery"}])+
-   '<section class="section container"><div class="grid video-grid">'+
-   (vids.map(videoCardHtml).join("") || '<div class="empty-state">No videos have been added yet.</div>')+
-   '</div></section>';
+  var html = pageHero("Video Gallery", [{label:"Home",href:"#/home"},{label:"Videos"}])+
+   '<section class="section container reveal in">';
+  if(vids.length===0){
+    html += '<div class="empty-state">No videos uploaded yet.</div>';
+  } else {
+    html += '<div class="grid video-grid">'+vids.map(videoCardHtml).join("")+'</div>';
+  }
+  html += '</section>';
+  main.innerHTML = html;
 }
-function openVideo(videoId, title){
-  document.getElementById("videoFrame").src = "https://www.youtube.com/embed/"+videoId+"?rel=0";
-  document.getElementById("videoModal").classList.add("open");
-}
-document.getElementById("videoModalClose").onclick = function(){
-  document.getElementById("videoModal").classList.remove("open");
-  document.getElementById("videoFrame").src = "";
-};
 
-/* ============================================================
-   GALLERY
-   ============================================================ */
 function renderGalleryRoute(parts, main){
-  var year = parts[1];
-  if(!year){
-    return renderRoute(); // fallback, shouldn't hit
-  }
-  var col = DB.gallery.collections.filter(function(c){return c.id===year;})[0];
-  if(!col){ render404(main); return; }
-  var photos = DB.gallery.photos.filter(function(p){return p.year===year && p.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-  main.innerHTML = pageHero(col.title,[{label:"Home",href:"#/home"},{label:"Photo Gallery",href:"#/home"},{label:col.title}])+
-   '<section class="section container">'+
-   '<p class="reveal in">'+photos.length+' Photo'+(photos.length===1?'':'s')+'</p>'+
-   '<div class="grid photo-grid" id="photoGrid" style="margin-top:16px">'+
-   (photos.map(function(p,i){ return '<div class="photo-item reveal in" data-i="'+i+'"><img src="'+p.imageUrl+'" alt="'+esc(p.alt||col.title)+'" loading="lazy" '+imgFallbackAttr()+'></div>'; }).join("") || '<div class="empty-state">No photos available for this academic year.</div>')+
-   '</div></section>';
-  var lb = document.getElementById("lightbox");
-  document.querySelectorAll("#photoGrid .photo-item").forEach(function(el){
-    el.addEventListener("click", function(){ openLightbox(photos, parseInt(el.dataset.i,10)); });
-  });
-}
-var lbState={list:[],i:0};
-function openLightbox(list,i){
-  lbState={list:list,i:i};
-  document.getElementById("lightbox").classList.add("open");
-  updateLightbox();
-}
-function updateLightbox(){
-  var p = lbState.list[lbState.i];
-  document.getElementById("lbImg").src = p.imageUrl;
-  document.getElementById("lbImg").alt = p.alt||"";
-  document.getElementById("lbCount").textContent = (lbState.i+1)+" / "+lbState.list.length;
-}
-document.getElementById("lbClose").onclick=function(){ document.getElementById("lightbox").classList.remove("open"); };
-document.getElementById("lbPrev").onclick=function(){ lbState.i=(lbState.i-1+lbState.list.length)%lbState.list.length; updateLightbox(); };
-document.getElementById("lbNext").onclick=function(){ lbState.i=(lbState.i+1)%lbState.list.length; updateLightbox(); };
-document.addEventListener("keydown", function(e){
-  if(document.getElementById("lightbox").classList.contains("open")){
-    if(e.key==="Escape") document.getElementById("lightbox").classList.remove("open");
-    if(e.key==="ArrowLeft") document.getElementById("lbPrev").click();
-    if(e.key==="ArrowRight") document.getElementById("lbNext").click();
-  }
-  if(e.key==="Escape") document.getElementById("videoModal").classList.remove("open");
-});
-
-/* ============================================================
-   SEARCH RESULTS PAGE (fallback, panel used mainly)
-   ============================================================ */
-function renderSearchPage(main){ openSearch(); main.innerHTML = pageHero("Search",[{label:"Home",href:"#/home"},{label:"Search"}]); }
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-function renderFooter(){
-  var c = DB.contact;
-  document.getElementById("siteFooter").innerHTML = '<div class="container footer-grid">'+
-   '<div><h4>Ajara Mahavidyalaya</h4><p style="color:#d8d8dc;font-size:.86rem;line-height:1.8">'+esc(c.name)+'<br>'+esc(c.address)+'<br>'+esc(c.phone)+'</p>'+
-   '<div class="foot-social">'+socialIcon(c.facebook,"f")+socialIcon(c.twitter,"x")+socialIcon(c.linkedin,"in")+socialIcon(c.youtube,"yt")+'</div></div>'+
-   '<div><h4>Explore</h4><a href="#/home">Home</a><a href="#/about">About Us</a><a href="#/programme">Programme</a><a href="#/faculty">Faculty</a><a href="#/facilities">Facilities</a><a href="#/naac">IQAC</a><a href="#/blog">Blog</a><a href="#/contact">Contact Us</a></div>'+
-   '<div><h4>Quick Links</h4><a href="#/about/about-sanstha">About Sanstha</a><a href="#/principal-desk">Principal\'s Desk</a><a href="#/chairman-desk">Chairman\'s Desk</a><a href="#/about/vision-mission">Vision And Mission</a><a href="#/about/code-of-conduct">Code Of Conduct</a></div>'+
-   '<div><h4>Useful Links</h4><a href="https://www.facebook.com/Ajara-College-1412033439013709/" target="_blank" rel="noopener noreferrer">Janata Education Society Ajara</a><a href="#/student-support">Career Portal</a><a href="https://unishivaji.ac.in/" target="_blank" rel="noopener noreferrer">Shivaji University</a><a href="https://unishivaji.ac.in/" target="_blank" rel="noopener noreferrer">Online Results</a></div>'+
-   '</div>'+
-   '<div class="foot-bottom">&copy; 2026. All Rights Reserved with Ajara Mahavidyalaya, Ajara. &nbsp;|&nbsp; Website Design: Webcubator Technologies</div>';
-}
-
-/* ============================================================
-   ADMIN
-   ============================================================ */
-var SESSION_KEY = "ajaramahavidyalaya_admin_session";
-function isAdmin(){ return sessionStorage.getItem(SESSION_KEY)==="1"; }
-function renderAdminRoute(parts, main){
-  if(!isAdmin()){ renderAdminLogin(main); return; }
-  var sub = parts[1] || "dashboard";
-  renderAdminShell(sub, parts, main);
-}
-function renderAdminLogin(main){
-  main.innerHTML = '<div class="admin-login-wrap"><div class="admin-login-card">'+
-   '<img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="Logo">'+
-   '<h2>Admin Login</h2>'+
-   '<form id="adminLoginForm" style="text-align:left;margin-top:16px">'+
-   field("Email","aEmail","email",true)+
-   '<div class="field"><label for="aPass">Password</label><div class="pw-wrap"><input type="password" id="aPass" required><button type="button" id="togglePw">SHOW</button></div></div>'+
-   '<div class="toggle-row"><label style="font-weight:500;display:flex;align-items:center;gap:8px"><input type="checkbox" id="rememberDevice" style="width:auto"> Remember this device</label></div>'+
-   '<div id="loginErr"></div>'+
-   '<button type="submit" class="btn" style="width:100%;justify-content:center;margin-top:6px">Login</button>'+
-   '</form></div></div>';
-  document.getElementById("togglePw").onclick=function(){
-    var i=document.getElementById("aPass"); i.type = i.type==="password"?"text":"password";
-    this.textContent = i.type==="password"?"SHOW":"HIDE";
-  };
-  document.getElementById("adminLoginForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    var email=document.getElementById("aEmail").value.trim();
-    var pass=document.getElementById("aPass").value;
-    var err=document.getElementById("loginErr");
-    if(email===ADMIN_EMAIL && pass===ADMIN_PASSWORD){
-      sessionStorage.setItem(SESSION_KEY,"1");
-      if(document.getElementById("rememberDevice").checked) localStorage.setItem(SESSION_KEY,"1");
-      logActivity("LOGIN","Admin");
-      navigate("#/admin/dashboard"); renderRoute();
-    } else {
-      err.innerHTML='<p class="error-text">Invalid email or password.</p>';
-    }
-  });
-}
-if(localStorage.getItem(SESSION_KEY)==="1"){ sessionStorage.setItem(SESSION_KEY,"1"); }
-
-function adminLogout(){
-  sessionStorage.removeItem(SESSION_KEY); localStorage.removeItem(SESSION_KEY);
-  logActivity("LOGOUT","Admin");
-  navigate("#/home"); renderRoute();
-}
-
-function renderAdminShell(sub, parts, main){
-  var content = document.createElement("div");
-  content.className="admin-shell";
-  var header = '<div class="admin-header">'+
-    '<img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="Logo">'+
-    '<div class="t">Ajara Mahavidyalaya<small>Admin Dashboard</small></div>'+
-    '<button class="btn sm outline" style="margin-left:auto" id="adminLogoutBtn">Logout</button></div>';
-  var body = '<div class="admin-body" id="adminBody"></div>';
-  content.innerHTML = header + body;
-  main.appendChild(content);
-  document.getElementById("adminLogoutBtn").onclick = adminLogout;
-
-  var body_el = document.getElementById("adminBody");
-  body_el.innerHTML = '<div class="dev-note">Client-side authentication in a single HTML file is not suitable for production-grade security. Replace with a server-side authentication system before public deployment.</div>' +
-    (sub==="dashboard" ? adminDashboardHtml() : "");
-  if(sub==="dashboard"){ wireDashboard(); return; }
-  renderAdminSection(sub, parts, body_el);
-}
-
-var ENTITY_CONFIGS = {
-  news:{label:"News / Events / Notices", key:"news", store:"ajaramahavidyalaya_news", fields:[
-    {k:"title",label:"Title",type:"text",required:true},
-    {k:"category",label:"Category",type:"select",options:["News","Event","Notice"]},
-    {k:"date",label:"Date",type:"date",required:true},
-    {k:"image",label:"Image URL",type:"image",dataKey:"image"},
-    {k:"excerpt",label:"Short Excerpt",type:"textarea"},
-    {k:"content",label:"Full Article",type:"textarea",required:true},
-    {k:"featured",label:"Featured",type:"toggle"},
-    {k:"published",label:"Published",type:"toggle"},
-    {k:"order",label:"Display Order",type:"number"}
-  ]},
-  videos:{label:"Videos", key:"videos", store:"ajaramahavidyalaya_videos", fields:[
-    {k:"title",label:"Video Title",type:"text",required:true},
-    {k:"youtubeUrl",label:"YouTube URL",type:"youtube",required:true},
-    {k:"description",label:"Description",type:"textarea"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  faculty:{label:"Faculty", key:"faculty", store:"ajaramahavidyalaya_faculty", fields:[
-    {k:"name",label:"Full Name",type:"text",required:true},
-    {k:"designation",label:"Designation",type:"text"},
-    {k:"department",label:"Department",type:"text"},
-    {k:"qualification",label:"Qualification",type:"text"},
-    {k:"specialization",label:"Specialization",type:"text"},
-    {k:"email",label:"Email",type:"text"},
-    {k:"phone",label:"Phone",type:"text"},
-    {k:"photo",label:"Photo URL",type:"image",dataKey:"photo"},
-    {k:"bio",label:"Bio / Profile",type:"textarea"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  facilities:{label:"Facilities", key:"facilities", store:"ajaramahavidyalaya_facilities", fields:[
-    {k:"name",label:"Facility Name",type:"text",required:true},
-    {k:"shortDesc",label:"Short Description",type:"textarea"},
-    {k:"fullDesc",label:"Full Description",type:"textarea"},
-    {k:"image",label:"Cover Image URL",type:"image",dataKey:"image"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  alumni:{label:"Alumni", key:"alumni", store:"ajaramahavidyalaya_alumni", fields:[
-    {k:"name",label:"Name",type:"text",required:true},
-    {k:"year",label:"Year of Passing",type:"text"},
-    {k:"programme",label:"Programme",type:"text"},
-    {k:"department",label:"Department",type:"text"},
-    {k:"profession",label:"Profession",type:"text"},
-    {k:"city",label:"City",type:"text"},
-    {k:"photo",label:"Photo URL",type:"image",dataKey:"photo"},
-    {k:"description",label:"Description",type:"textarea"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  blog:{label:"Blog", key:"blog", store:"ajaramahavidyalaya_blog", fields:[
-    {k:"title",label:"Title",type:"text",required:true},
-    {k:"category",label:"Category",type:"text"},
-    {k:"date",label:"Date",type:"date"},
-    {k:"author",label:"Author",type:"text"},
-    {k:"coverImage",label:"Cover Image URL",type:"image",dataKey:"coverImage"},
-    {k:"excerpt",label:"Excerpt",type:"textarea"},
-    {k:"content",label:"Content",type:"textarea",required:true},
-    {k:"featured",label:"Featured",type:"toggle"},
-    {k:"published",label:"Published",type:"toggle"},
-    {k:"order",label:"Display Order",type:"number"}
-  ]},
-  naac:{label:"NAAC / IQAC Documents", key:"naac", store:"ajaramahavidyalaya_naac", fields:[
-    {k:"title",label:"Title",type:"text",required:true},
-    {k:"category",label:"Category",type:"select",options:["NAAC","IQAC","SSR","AQAR","Accreditation","Quality Initiatives","Other"]},
-    {k:"year",label:"Academic Year",type:"text"},
-    {k:"description",label:"Description",type:"textarea"},
-    {k:"url",label:"Document URL",type:"url"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  rti:{label:"RTI Documents", key:"rti", store:"ajaramahavidyalaya_rti", fields:[
-    {k:"title",label:"Title",type:"text",required:true},
-    {k:"year",label:"Year",type:"text"},
-    {k:"description",label:"Description",type:"textarea"},
-    {k:"url",label:"Document URL",type:"url"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]},
-  supportLinks:{label:"Student Support Links", key:"supportLinks", store:"ajaramahavidyalaya_support_links", fields:[
-    {k:"title",label:"Title",type:"text",required:true},
-    {k:"description",label:"Short Description",type:"textarea"},
-    {k:"url",label:"External URL",type:"url"},
-    {k:"order",label:"Display Order",type:"number"},
-    {k:"published",label:"Published",type:"toggle"}
-  ]}
-};
-
-function adminDashboardHtml(){
-  var tiles = Object.keys(ENTITY_CONFIGS).map(function(k){
-    var arr = DB[ENTITY_CONFIGS[k].key];
-    var pub = arr.filter(function(i){return i.published;}).length;
-    return '<a href="#/admin/'+k+'" class="card admin-tile"><div class="n">'+pub+'</div><div class="l">'+ENTITY_CONFIGS[k].label+'</div></a>';
-  }).join("") + '<a href="#/admin/gallery" class="card admin-tile"><div class="n">'+DB.gallery.photos.filter(function(p){return p.published;}).length+'</div><div class="l">Photo Gallery</div></a>'+
-    '<a href="#/admin/contact" class="card admin-tile"><div class="n">&#9998;</div><div class="l">Contact Settings</div></a>';
-  var recent = DB.activity.slice(0,8).map(function(a){ return '<li><b>'+esc(a.action)+'</b> — '+esc(a.item)+' <span class="helper-text">('+new Date(a.time).toLocaleString()+')</span></li>'; }).join("") || '<li class="helper-text">No recent activity yet.</li>';
-  return '<h2 style="margin-bottom:16px">Dashboard</h2>'+
-    '<div class="grid admin-card-grid">'+tiles+'</div>'+
-    '<h3 style="margin:26px 0 12px">Quick Actions</h3>'+
-    '<div class="admin-menu"><a href="#/admin/news/new">+ Add News</a><a href="#/admin/videos/new">+ Add Video</a><a href="#/admin/gallery">+ Add Photo</a><a href="#/admin/blog/new">+ Add Blog</a><a href="#/admin/facilities/new">+ Add Facility</a></div>'+
-    '<h3 style="margin:20px 0 10px">Recent Admin Activity</h3><ul class="info-list">'+recent+'</ul>';
-}
-function wireDashboard(){}
-
-function renderAdminSection(sub, parts, container){
-  if(sub==="gallery") return renderAdminGallery(parts, container);
-  if(sub==="contact") return renderAdminContact(container);
-  var cfg = ENTITY_CONFIGS[sub];
-  if(!cfg){ container.innerHTML += '<div class="empty-state">Unknown admin section.</div>'; return; }
-  var id = parts[2];
-  if(id) return renderAdminForm(cfg, id, container);
-  renderAdminList(cfg, container);
-}
-
-function renderAdminList(cfg, container){
-  var list = DB[cfg.key].slice().sort(function(a,b){return (a.order||0)-(b.order||0);});
-  container.innerHTML += '<div class="back-row"><button onclick="AjaraApp.navigate(\'#/admin/dashboard\')">&larr; Back</button></div>'+
-    '<h2>'+cfg.label+'</h2>'+
-    '<div class="admin-searchbar"><input type="text" id="adminSearchBox" placeholder="Search '+cfg.label+'..."></div>'+
-    '<a href="#/admin/'+Object.keys(ENTITY_CONFIGS).filter(function(k){return ENTITY_CONFIGS[k]===cfg;})[0]+'/new" class="btn sm" style="margin-bottom:16px">+ Add New</a>'+
-    '<div id="adminRecordList"></div>';
-  function titleOf(item){ return item.title || item.name || "Untitled"; }
-  function draw(q){
-    q=(q||"").toLowerCase();
-    var filtered = q ? list.filter(function(i){return titleOf(i).toLowerCase().indexOf(q)>-1;}) : list;
-    var box = document.getElementById("adminRecordList");
-    if(!filtered.length){ box.innerHTML='<div class="empty-state">No records yet.</div>'; return; }
-    var entityKey = Object.keys(ENTITY_CONFIGS).filter(function(k){return ENTITY_CONFIGS[k]===cfg;})[0];
-    box.innerHTML = filtered.map(function(item){
-      return '<div class="card record-card"><div class="top"><div><div class="title">'+esc(titleOf(item))+'</div><div class="meta">'+esc(item.category||item.department||item.date||"")+'</div></div>'+
-        '<span class="status-pill '+(item.published?'pub':'draft')+'">'+(item.published?'PUBLISHED':'DRAFT')+'</span></div>'+
-        (item.featured?'<span class="status-pill feat">FEATURED</span>':'')+
-        '<div class="record-actions">'+
-        '<button onclick="AjaraApp.navigate(\'#/admin/'+entityKey+'/'+item.id+'\')">Edit</button>'+
-        '<button onclick="AjaraApp.togglePublish(\''+entityKey+'\',\''+item.id+'\')">'+(item.published?'Unpublish':'Publish')+'</button>'+
-        '<button class="danger" onclick="AjaraApp.deleteRecord(\''+entityKey+'\',\''+item.id+'\')">Delete</button>'+
-        '</div></div>';
-    }).join("");
-  }
-  draw("");
-  document.getElementById("adminSearchBox").addEventListener("input", function(e){ draw(e.target.value); });
-}
-
-function renderAdminForm(cfg, id, container){
-  var isNew = id==="new";
-  var item = isNew ? {} : DB[cfg.key].filter(function(x){return x.id===id;})[0];
-  if(!item){ container.innerHTML += '<div class="empty-state">Record not found.</div>'; return; }
-  var entityKey = Object.keys(ENTITY_CONFIGS).filter(function(k){return ENTITY_CONFIGS[k]===cfg;})[0];
-  var formHtml = cfg.fields.map(function(f){
-    var val = item[f.k]!==undefined ? item[f.k] : "";
-    if(f.type==="toggle"){
-      return '<div class="toggle-row"><label style="font-weight:600">'+f.label+'</label><label style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="f_'+f.k+'" '+(val?'checked':'')+' style="width:auto;transform:scale(1.3)"></label></div>';
-    }
-    if(f.type==="select"){
-      return '<div class="field"><label>'+f.label+'</label><select id="f_'+f.k+'">'+f.options.map(function(o){return '<option '+(val===o?'selected':'')+'>'+o+'</option>';}).join("")+'</select></div>';
-    }
-    if(f.type==="textarea"){
-      return '<div class="field"><label>'+f.label+(f.required?' *':'')+'</label><textarea id="f_'+f.k+'" rows="5">'+esc(val)+'</textarea></div>';
-    }
-    if(f.type==="image"){
-      return '<div class="field"><label>'+f.label+'</label><input type="text" id="f_'+f.k+'" value="'+esc(val)+'" placeholder="https://..."><div class="img-preview" id="prev_'+f.k+'">'+(val?('<img src="'+val+'" '+imgFallbackAttr()+'>'):'')+'</div></div>';
-    }
-    if(f.type==="youtube"){
-      var vid = extractYouTubeId(val);
-      return '<div class="field"><label>'+f.label+(f.required?' *':'')+'</label><input type="text" id="f_'+f.k+'" value="'+esc(val)+'" placeholder="https://youtube.com/watch?v=..."><div class="helper-text" id="ytHelper">'+(vid?('Video ID: '+vid):'')+'</div><div class="img-preview" id="ytPreview">'+(vid?('<img src="'+ytThumb(vid)+'" '+imgFallbackAttr()+'>'):'')+'</div></div>';
-    }
-    if(f.type==="date"){
-      return '<div class="field"><label>'+f.label+(f.required?' *':'')+'</label><input type="date" id="f_'+f.k+'" value="'+esc(val)+'"></div>';
-    }
-    if(f.type==="number"){
-      return '<div class="field"><label>'+f.label+'</label><input type="number" id="f_'+f.k+'" value="'+esc(val||1)+'"></div>';
-    }
-    if(f.type==="url"){
-      return '<div class="field"><label>'+f.label+'</label><input type="text" id="f_'+f.k+'" value="'+esc(val)+'" placeholder="https://..."></div>';
-    }
-    return '<div class="field"><label>'+f.label+(f.required?' *':'')+'</label><input type="text" id="f_'+f.k+'" value="'+esc(val)+'"></div>';
-  }).join("");
-
-  container.innerHTML += '<div class="back-row"><button onclick="AjaraApp.navigate(\'#/admin/'+entityKey+'\')">&larr; Back</button></div>'+
-    '<h2>'+(isNew?'Add':'Edit')+' '+cfg.label.replace(/s$/,'')+'</h2>'+
-    '<form id="adminEntityForm">'+formHtml+'<div id="formErr"></div></form>'+
-    '<div class="sticky-save"><button class="btn outline" onclick="AjaraApp.navigate(\'#/admin/'+entityKey+'\')" type="button">Cancel</button><button class="btn" id="saveEntityBtn">Save</button></div>';
-
-  cfg.fields.forEach(function(f){
-    if(f.type==="image"){
-      var inp=document.getElementById("f_"+f.k);
-      inp.addEventListener("input", function(){
-        var prev=document.getElementById("prev_"+f.k);
-        prev.innerHTML = isValidUrl(inp.value) ? ('<img src="'+esc(inp.value)+'" onerror="this.parentElement.innerHTML=\'<p class=&quot;error-text&quot;>Unable to load this image.</p>\'">') : '';
+  var id = parts[1];
+  
+  if(id){
+    var col = DB.gallery.collections.filter(function(c){return c.id===id;})[0];
+    if(!col){ render404(main); return; }
+    var photos = DB.gallery.photos.filter(function(p){return p.year===id && p.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
+    var html = pageHero(col.title+" Gallery", [{label:"Home",href:"#/home"},{label:"Gallery",href:"#/gallery"},{label:col.title}])+
+      '<section class="section container reveal in"><div class="grid photo-grid">';
+    if(photos.length===0){ html += '<div class="empty-state" style="grid-column:1/-1">No photos in this collection.</div>'; }
+    else {
+      photos.forEach(function(p, i){
+        html += '<div class="photo-item" onclick="openLightbox('+i+', \''+id+'\')"><img src="'+p.imageUrl+'" loading="lazy" '+imgFallbackAttr()+'></div>';
       });
     }
-    if(f.type==="youtube"){
-      var yinp=document.getElementById("f_"+f.k);
-      yinp.addEventListener("input", function(){
-        var vid=extractYouTubeId(yinp.value);
-        document.getElementById("ytHelper").textContent = vid?("Video ID: "+vid):"Enter a valid YouTube URL.";
-        document.getElementById("ytPreview").innerHTML = vid ? ('<img src="'+ytThumb(vid)+'" onerror="this.src=\''+ytThumbFallback(vid)+'\'">') : '';
-      });
-    }
-  });
-
-  document.getElementById("saveEntityBtn").onclick = function(){
-    var data = {};
-    var errs=[];
-    cfg.fields.forEach(function(f){
-      var el = document.getElementById("f_"+f.k);
-      var v;
-      if(f.type==="toggle") v = el.checked;
-      else v = el.value;
-      if(f.required && !v){ errs.push(f.label+" is required."); }
-      if(f.type==="url" && v && !isValidUrl(v)){ errs.push(f.label+" must be a valid http(s) URL."); }
-      if(f.type==="youtube" && v){
-        var vid = extractYouTubeId(v);
-        if(!vid){ errs.push("Please enter a valid YouTube URL."); }
-        else { item.videoId = vid; item.thumbnail = ytThumb(vid); }
-      }
-      data[f.k]=v;
-    });
-    if(errs.length){ document.getElementById("formErr").innerHTML = errs.map(function(e){return '<p class="error-text">'+esc(e)+'</p>';}).join(""); return; }
-    Object.assign(item, data);
-    item.updatedAt = nowIso();
-    if(isNew){ item.id = uid(entityKey); item.createdAt = nowIso(); if(item.published===undefined) item.published=true; DB[cfg.key].push(item); logActivity("ADD", data.title||data.name); }
-    else { logActivity("EDIT", data.title||data.name); }
-    saveStore(cfg.store, DB[cfg.key]);
-    toast("Saved successfully.");
-    navigate("#/admin/"+entityKey);
-    renderRoute();
-  };
-}
-
-function togglePublish(entityKey, id){
-  var cfg = ENTITY_CONFIGS[entityKey];
-  var item = DB[cfg.key].filter(function(x){return x.id===id;})[0];
-  if(!item) return;
-  item.published = !item.published;
-  saveStore(cfg.store, DB[cfg.key]);
-  logActivity(item.published?"PUBLISH":"UNPUBLISH", item.title||item.name);
-  toast(item.published?"Published successfully.":"Saved successfully.");
-  renderRoute();
-}
-function deleteRecord(entityKey, id){
-  confirmModal("Are you sure you want to delete this item?", function(){
-    var cfg = ENTITY_CONFIGS[entityKey];
-    DB[cfg.key] = DB[cfg.key].filter(function(x){return x.id!==id;});
-    saveStore(cfg.store, DB[cfg.key]);
-    logActivity("DELETE", id);
-    toast("Deleted successfully.");
-    renderRoute();
-  });
-}
-
-/* ---- Gallery admin (nested collections/photos) ---- */
-function renderAdminGallery(parts, container){
-  container.innerHTML += '<div class="back-row"><button onclick="AjaraApp.navigate(\'#/admin/dashboard\')">&larr; Back</button></div>'+
-    '<h2>Photo Gallery Management</h2>'+
-    '<div id="galleryAdminBody"></div>';
-  var body = document.getElementById("galleryAdminBody");
-  function draw(){
-    var cols = DB.gallery.collections.slice().sort(function(a,b){return (a.order||0)-(b.order||0);});
-    body.innerHTML = '<div class="field"><label>Create New Academic Year (e.g. 2027-2028)</label><div style="display:flex;gap:8px"><input type="text" id="newYearId" placeholder="2027-2028" style="flex:1"><button class="btn sm" id="addYearBtn">Add</button></div></div>'+
-      cols.map(function(c){
-        var photos = DB.gallery.photos.filter(function(p){return p.year===c.id;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
-        return '<div class="card" style="padding:16px;margin-top:16px"><div class="top" style="display:flex;justify-content:space-between"><h3>'+esc(c.title)+'</h3><button class="record-actions" style="border:1px solid var(--line);border-radius:8px;padding:6px 10px;color:#c0392b" onclick="AjaraApp.deleteYear(\''+c.id+'\')">Delete Year</button></div>'+
-          '<div id="photosOf_'+c.id+'">'+(photos.length? photos.map(function(p){
-            return '<div class="record-card" style="flex-direction:row;align-items:center"><img src="'+p.imageUrl+'" style="width:60px;height:60px;object-fit:cover;border-radius:8px" '+imgFallbackAttr()+'>'+
-              '<div style="flex:1;margin-left:10px"><span class="status-pill '+(p.published?'pub':'draft')+'">'+(p.published?'PUBLISHED':'DRAFT')+'</span></div>'+
-              '<button onclick="AjaraApp.togglePhoto(\''+p.id+'\')" style="margin-right:6px">'+(p.published?'Unpublish':'Publish')+'</button>'+
-              '<button class="danger" onclick="AjaraApp.deletePhoto(\''+p.id+'\')" style="color:#c0392b">Delete</button></div>';
-          }).join("") : '<div class="empty-state">Photos for this academic year will be added soon.</div>')+'</div>'+
-          '<div class="field" style="margin-top:12px"><label>Add Photo — Image URL</label><input type="text" id="newPhoto_'+c.id+'" placeholder="https://..."><div class="img-preview" id="newPhotoPrev_'+c.id+'"></div><button class="btn sm" style="margin-top:8px" onclick="AjaraApp.addPhoto(\''+c.id+'\')">Add Photo</button></div>'+
-          '</div>';
-      }).join("");
-    document.getElementById("addYearBtn").onclick = function(){
-      var v = document.getElementById("newYearId").value.trim();
-      if(!v){ toast("Please enter an academic year."); return; }
-      var idv = v.replace(/\s/g,"");
-      if(DB.gallery.collections.some(function(c){return c.id===idv;})){ toast("This academic year already exists."); return; }
-      DB.gallery.collections.push({id:idv, title:v.replace("-","–"), order:DB.gallery.collections.length+1});
-      saveStore("ajaramahavidyalaya_gallery", DB.gallery);
-      logActivity("ADD","Gallery year "+v);
-      toast("Saved successfully."); draw();
-    };
+    html += '</div><a href="#/gallery" class="btn outline sm" style="margin-top:30px">&larr; Back to Collections</a></section>';
+    main.innerHTML = html;
+    return;
+  }
+  
+  var html = pageHero("Photo Gallery", [{label:"Home",href:"#/home"},{label:"Gallery"}])+
+   '<section class="section container reveal in"><div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">';
+  var cols = DB.gallery.collections.slice().sort(function(a,b){return (a.order||0)-(b.order||0);});
+  if(cols.length===0){
+    html += '<div class="empty-state" style="grid-column:1/-1">Gallery collections are being updated.</div>';
+  } else {
     cols.forEach(function(c){
-      var inp = document.getElementById("newPhoto_"+c.id);
-      if(inp) inp.addEventListener("input", function(){
-        var prev = document.getElementById("newPhotoPrev_"+c.id);
-        prev.innerHTML = isValidUrl(inp.value) ? ('<img src="'+esc(inp.value)+'" onerror="this.parentElement.innerHTML=\'<p class=&quot;error-text&quot;>Unable to load this image.</p>\'">') : '';
-      });
+      var photos = DB.gallery.photos.filter(function(p){return p.year===c.id && p.published;});
+      var cover = photos[0];
+      var img = cover ? cover.imageUrl : "";
+      html += '<a href="#/gallery/'+c.id+'" class="card" style="padding:14px"><div class="gallery-cover" style="margin-bottom:14px">'+(img?('<img src="'+img+'" loading="lazy" '+imgFallbackAttr()+'>'):('<div style="width:100%;height:100%;background:var(--accent-light);display:flex;align-items:center;justify-content:center;color:var(--accent-dark);font-weight:700;text-align:center;padding:10px">NO PHOTOS</div>'))+'</div><h3 style="text-align:center;font-size:1rem">'+esc(c.title)+'</h3><p style="text-align:center;font-size:.8rem">'+photos.length+' Photos</p></a>';
     });
   }
-  draw();
-  window.AjaraApp.__galleryDraw = draw;
-}
-function addPhoto(yearId){
-  var inp = document.getElementById("newPhoto_"+yearId);
-  var url = inp.value.trim();
-  if(!isValidUrl(url)){ toast("Please enter a valid image URL."); return; }
-  DB.gallery.photos.push({id:uid("p"), year:yearId, imageUrl:url, caption:"", alt:"Ajara Mahavidyalaya photo — "+yearId, published:true, order:DB.gallery.photos.filter(function(p){return p.year===yearId;}).length+1});
-  saveStore("ajaramahavidyalaya_gallery", DB.gallery);
-  logActivity("ADD","Photo in "+yearId);
-  toast("Saved successfully.");
-  window.AjaraApp.__galleryDraw();
-}
-function togglePhoto(id){
-  var p = DB.gallery.photos.filter(function(x){return x.id===id;})[0]; if(!p) return;
-  p.published=!p.published; saveStore("ajaramahavidyalaya_gallery", DB.gallery);
-  toast("Saved successfully."); window.AjaraApp.__galleryDraw();
-}
-function deletePhoto(id){
-  confirmModal("Are you sure you want to delete this photo?", function(){
-    DB.gallery.photos = DB.gallery.photos.filter(function(x){return x.id!==id;});
-    saveStore("ajaramahavidyalaya_gallery", DB.gallery);
-    logActivity("DELETE","Photo"); toast("Deleted successfully."); window.AjaraApp.__galleryDraw();
-  });
-}
-function deleteYear(id){
-  confirmModal("Deleting will remove this academic year and its photos. Continue?", function(){
-    DB.gallery.collections = DB.gallery.collections.filter(function(c){return c.id!==id;});
-    DB.gallery.photos = DB.gallery.photos.filter(function(p){return p.year!==id;});
-    saveStore("ajaramahavidyalaya_gallery", DB.gallery);
-    logActivity("DELETE","Gallery year "+id); toast("Deleted successfully."); window.AjaraApp.__galleryDraw();
-  });
+  html += '</div></section>';
+  main.innerHTML = html;
 }
 
-/* ---- Contact settings admin ---- */
-function renderAdminContact(container){
-  var c = DB.contact;
-  container.innerHTML += '<div class="back-row"><button onclick="AjaraApp.navigate(\'#/admin/dashboard\')">&larr; Back</button></div>'+
-    '<h2>Contact Settings</h2><form id="contactSettingsForm">'+
-    field("College Name","csName","text",true)+field("Address","csAddress","textarea",true)+
-    field("Phone","csPhone","text",true)+field("Email","csEmail","text",false)+
-    field("Map URL","csMap","text",false)+field("Facebook URL","csFb","text",false)+
-    field("Twitter URL","csTw","text",false)+field("LinkedIn URL","csLi","text",false)+field("YouTube URL","csYt","text",false)+
-    '</form><div class="sticky-save"><button class="btn" id="saveContactBtn">Save</button></div>';
-  document.getElementById("csName").value=c.name; document.getElementById("csAddress").value=c.address;
-  document.getElementById("csPhone").value=c.phone; document.getElementById("csEmail").value=c.email||"";
-  document.getElementById("csMap").value=c.mapUrl; document.getElementById("csFb").value=c.facebook;
-  document.getElementById("csTw").value=c.twitter; document.getElementById("csLi").value=c.linkedin; document.getElementById("csYt").value=c.youtube;
-  document.getElementById("saveContactBtn").onclick = function(){
-    DB.contact = {name:document.getElementById("csName").value,address:document.getElementById("csAddress").value,phone:document.getElementById("csPhone").value,email:document.getElementById("csEmail").value,mapUrl:document.getElementById("csMap").value,facebook:document.getElementById("csFb").value,twitter:document.getElementById("csTw").value,linkedin:document.getElementById("csLi").value,youtube:document.getElementById("csYt").value};
-    saveStore("ajaramahavidyalaya_contact", DB.contact);
-    logActivity("EDIT","Contact Settings");
-    toast("Saved successfully.");
-    renderFooter();
-  };
+var lbData = [];
+var lbIndex = 0;
+var lbBox = document.getElementById("lightbox");
+var lbImg = document.getElementById("lbImg");
+var lbCount = document.getElementById("lbCount");
+window.openLightbox = function(idx, colId){
+  lbData = DB.gallery.photos.filter(function(p){return p.year===colId && p.published;}).sort(function(a,b){return (a.order||0)-(b.order||0);});
+  if(!lbData.length) return;
+  lbIndex = idx;
+  updateLightbox();
+  lbBox.classList.add("open");
+};
+function updateLightbox(){
+  lbImg.src = lbData[lbIndex].imageUrl;
+  lbCount.textContent = (lbIndex+1)+" of "+lbData.length;
 }
+document.getElementById("lbClose").onclick = function(){ lbBox.classList.remove("open"); };
+document.getElementById("lbPrev").onclick = function(e){ e.stopPropagation(); lbIndex=(lbIndex-1+lbData.length)%lbData.length; updateLightbox(); };
+document.getElementById("lbNext").onclick = function(e){ e.stopPropagation(); lbIndex=(lbIndex+1)%lbData.length; updateLightbox(); };
+lbBox.onclick = function(e){ if(e.target===lbBox) lbBox.classList.remove("open"); };
 
 /* ============================================================
-   EXPOSE PUBLIC API + INIT
+   ADMIN SYSTEM
    ============================================================ */
-window.AjaraApp = {
-  navigate: navigate,
-  openVideo: openVideo,
-  togglePublish: togglePublish,
-  deleteRecord: deleteRecord,
-  addPhoto: addPhoto,
-  togglePhoto: togglePhoto,
-  deletePhoto: deletePhoto,
-  deleteYear: deleteYear
+var isAdminLoggedIn = false;
+
+function renderAdminRoute(parts, main){
+  if(!isAdminLoggedIn){ renderAdminLogin(main); return; }
+  var view = parts[1] || "dashboard";
+  
+  var html = '<div class="admin-shell"><header class="admin-header"><img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="Logo"><div class="t">Ajara Mahavidyalaya<small>Admin Panel</small></div><button onclick="window.adminLogout()" class="btn sm outline" style="margin-left:auto">Logout</button></header><div class="admin-body">';
+  
+  if(view==="dashboard"){
+    html += '<h2 style="margin-bottom:20px">Dashboard</h2><div class="admin-menu">'+
+      '<a href="#/admin/news">News & Events</a>'+
+      '<a href="#/admin/gallery">Photo Gallery</a>'+
+      '<a href="#/admin/videos">Videos</a>'+
+      '<a href="#/admin/faculty">Faculty</a>'+
+      '<a href="#/home">Exit to Site</a>'+
+      '</div><div class="grid admin-card-grid" style="margin-top:30px">'+
+      '<div class="card admin-tile"><div class="n">'+DB.news.length+'</div><div class="l">News Articles</div></div>'+
+      '<div class="card admin-tile"><div class="n">'+DB.videos.length+'</div><div class="l">Videos</div></div>'+
+      '<div class="card admin-tile"><div class="n">'+DB.gallery.photos.length+'</div><div class="l">Photos</div></div>'+
+      '</div>';
+  } else if(view==="news"){
+    html += renderAdminNewsList();
+  } else if(view==="videos"){
+    html += renderAdminVideoList();
+  } else if(view==="gallery"){
+    html += renderAdminGalleryList();
+  } else if(view==="faculty"){
+    html += renderAdminFacultyList();
+  } else {
+    html += '<div class="empty-state">Module not found.<br><br><a href="#/admin" class="btn outline sm">Back to Dashboard</a></div>';
+  }
+  html += '</div></div>';
+  main.innerHTML = html;
+}
+
+window.adminLogout = function(){ isAdminLoggedIn = false; navigate("#/home"); toast("Logged out successfully."); };
+
+function renderAdminLogin(main){
+  main.innerHTML = '<div class="admin-login-wrap"><div class="admin-login-card"><img src="https://cdn.shopify.com/s/files/1/1012/1602/6995/files/IMG-3641.png?v=1789199821" alt="Logo"><h3>Admin Login</h3><p style="margin-bottom:24px;font-size:.85rem">Ajara Mahavidyalaya Content Management</p><form onsubmit="window.doAdminLogin(event)"><div class="field"><input type="email" id="admEmail" placeholder="Email Address" required></div><div class="field pw-wrap"><input type="password" id="admPw" placeholder="Password" required><button type="button" onclick="this.previousElementSibling.type=this.previousElementSibling.type===\'password\'?\'text\':\'password\'">SHOW</button></div><button type="submit" class="btn w-full" style="width:100%;margin-top:10px">Login Securely</button><p class="error-text" id="admErr"></p></form><a href="#/home" style="display:inline-block;margin-top:20px;font-size:.85rem;font-weight:600;color:var(--ink-soft)">&larr; Back to Main Site</a></div></div>';
+}
+window.doAdminLogin = function(e){
+  e.preventDefault();
+  if(document.getElementById("admEmail").value === ADMIN_EMAIL && document.getElementById("admPw").value === ADMIN_PASSWORD){
+    isAdminLoggedIn = true; toast("Welcome to Admin Panel"); navigate("#/admin");
+  } else { document.getElementById("admErr").textContent = "Invalid email or password."; }
 };
 
-renderFooter();
-if(!location.hash) location.hash = "#/home";
-renderRoute();
+function renderAdminNewsList(){
+  var html = '<div class="back-row"><button onclick="navigate(\'#/admin\')">&larr; Dashboard</button></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h2>Manage News & Events</h2><button class="btn sm" onclick="window.adminEditNews(\'new\')">+ Add News</button></div>';
+  var sorted = DB.news.slice().sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  if(sorted.length===0){ html += '<div class="empty-state">No news articles found.</div>'; }
+  sorted.forEach(function(n){
+    html += '<div class="record-card"><div class="top"><div><div class="title">'+esc(n.title)+'</div><div class="meta">'+fmtDate(n.date)+' • '+esc(n.category)+'</div></div><div class="status-pill '+(n.published?'pub':'draft')+'">'+(n.published?'Published':'Draft')+'</div></div><div class="record-actions"><button onclick="window.adminEditNews(\''+n.id+'\')">Edit</button><button class="danger" onclick="window.adminDeleteNews(\''+n.id+'\')">Delete</button></div></div>';
+  });
+  return html;
+}
 
+window.adminEditNews = function(id){
+  var isNew = (id==="new");
+  var n = isNew ? {title:"",category:"Notice",date:new Date().toISOString().split("T")[0],excerpt:"",content:"",image:"",featured:false,published:true} : DB.news.filter(function(x){return x.id===id;})[0];
+  var fHtml = '<div class="back-row"><button onclick="navigate(\'#/admin/news\')">&larr; Back</button></div><h2>'+(isNew?'Add News':'Edit News')+'</h2><div class="card" style="padding:20px;margin-top:20px"><form id="newsForm"><div class="field"><label>Title</label><input type="text" id="nTitle" value="'+esc(n.title)+'" required></div><div class="grid grid-2"><div class="field"><label>Category</label><select id="nCat"><option '+(n.category==='Notice'?'selected':'')+'>Notice</option><option '+(n.category==='Event'?'selected':'')+'>Event</option><option '+(n.category==='Achievement'?'selected':'')+'>Achievement</option></select></div><div class="field"><label>Date</label><input type="date" id="nDate" value="'+esc(n.date)+'" required></div></div><div class="field"><label>Image URL (Optional)</label><input type="text" id="nImg" value="'+esc(n.image)+'"></div><div class="field"><label>Short Excerpt</label><textarea id="nExc" rows="2">'+esc(n.excerpt)+'</textarea></div><div class="field"><label>Full Content</label><textarea id="nCon" rows="6" required>'+esc(n.content)+'</textarea></div><div class="toggle-row"><label>Published</label><input type="checkbox" id="nPub" '+(n.published?'checked':'')+'></div><div class="toggle-row"><label>Featured on Homepage</label><input type="checkbox" id="nFeat" '+(n.featured?'checked':'')+'></div></form></div><div class="sticky-save"><button class="btn outline" onclick="navigate(\'#/admin/news\')">Cancel</button><button class="btn" onclick="window.adminSaveNews(\''+id+'\')">Save Changes</button></div>';
+  document.querySelector('.admin-body').innerHTML = fHtml;
+};
+window.adminSaveNews = function(id){
+  var isNew = (id==="new");
+  if(!document.getElementById("nTitle").value.trim()){ toast("Title is required."); return; }
+  var obj = {
+    id: isNew ? uid('n') : id,
+    title: document.getElementById("nTitle").value, category: document.getElementById("nCat").value,
+    date: document.getElementById("nDate").value, image: document.getElementById("nImg").value,
+    excerpt: document.getElementById("nExc").value, content: document.getElementById("nCon").value,
+    published: document.getElementById("nPub").checked, featured: document.getElementById("nFeat").checked
+  };
+  if(isNew) DB.news.push(obj);
+  else DB.news = DB.news.map(function(x){return x.id===id?obj:x;});
+  if(saveStore("ajaramahavidyalaya_news", DB.news)){ toast("News saved!"); logActivity(isNew?"Created News":"Updated News", obj.title); navigate("#/admin/news"); }
+};
+window.adminDeleteNews = function(id){ confirmModal("Delete this news article?", function(){ DB.news=DB.news.filter(function(x){return x.id!==id;}); if(saveStore("ajaramahavidyalaya_news", DB.news)){ toast("Deleted."); navigate("#/admin/news"); } }); };
+
+function renderAdminVideoList(){
+  var html = '<div class="back-row"><button onclick="navigate(\'#/admin\')">&larr; Dashboard</button></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h2>Manage Videos</h2><button class="btn sm" onclick="window.adminEditVideo(\'new\')">+ Add Video</button></div>';
+  if(DB.videos.length===0){ html += '<div class="empty-state">No videos found.</div>'; }
+  DB.videos.forEach(function(v){
+    html += '<div class="record-card"><div class="top"><div><div class="title">'+esc(v.title)+'</div><div class="meta">YT ID: '+esc(v.videoId)+'</div></div><div class="status-pill '+(v.published?'pub':'draft')+'">'+(v.published?'Published':'Draft')+'</div></div><div class="record-actions"><button onclick="window.adminEditVideo(\''+v.id+'\')">Edit</button><button class="danger" onclick="window.adminDeleteVideo(\''+v.id+'\')">Delete</button></div></div>';
+  });
+  return html;
+}
+window.adminEditVideo = function(id){
+  var isNew = (id==="new");
+  var v = isNew ? {title:"",youtubeUrl:"",published:true,order:DB.videos.length+1} : DB.videos.filter(function(x){return x.id===id;})[0];
+  var fHtml = '<div class="back-row"><button onclick="navigate(\'#/admin/videos\')">&larr; Back</button></div><h2>'+(isNew?'Add Video':'Edit Video')+'</h2><div class="card" style="padding:20px;margin-top:20px"><form id="vidForm"><div class="field"><label>Title</label><input type="text" id="vTitle" value="'+esc(v.title)+'" required></div><div class="field"><label>YouTube URL</label><input type="text" id="vUrl" value="'+esc(v.youtubeUrl)+'" required onblur="window.previewYt(this.value)"><div class="helper-text">E.g., https://www.youtube.com/watch?v=XXXXXX</div></div><div class="img-preview" id="vPreview" style="display:'+(isNew?'none':'block')+'"><img src="'+(isNew?'':v.thumbnail)+'"></div><div class="toggle-row" style="margin-top:20px"><label>Published</label><input type="checkbox" id="vPub" '+(v.published?'checked':'')+'></div></form></div><div class="sticky-save"><button class="btn outline" onclick="navigate(\'#/admin/videos\')">Cancel</button><button class="btn" onclick="window.adminSaveVideo(\''+id+'\')">Save Changes</button></div>';
+  document.querySelector('.admin-body').innerHTML = fHtml;
+};
+window.previewYt = function(url){ var yt = extractYouTubeId(url); if(yt){ document.getElementById("vPreview").style.display="block"; document.querySelector("#vPreview img").src=ytThumb(yt); } };
+window.adminSaveVideo = function(id){
+  var isNew = (id==="new");
+  var ytUrl = document.getElementById("vUrl").value;
+  var ytId = extractYouTubeId(ytUrl);
+  if(!document.getElementById("vTitle").value.trim() || !ytId){ toast("Valid Title and YouTube URL are required."); return; }
+  var obj = {
+    id: isNew ? uid('v') : id, title: document.getElementById("vTitle").value,
+    youtubeUrl: ytUrl, videoId: ytId, thumbnail: ytThumb(ytId),
+    published: document.getElementById("vPub").checked, order: isNew ? DB.videos.length+1 : DB.videos.filter(function(x){return x.id===id;})[0].order
+  };
+  if(isNew) DB.videos.push(obj);
+  else DB.videos = DB.videos.map(function(x){return x.id===id?obj:x;});
+  if(saveStore("ajaramahavidyalaya_videos", DB.videos)){ toast("Video saved!"); logActivity(isNew?"Added Video":"Updated Video", obj.title); navigate("#/admin/videos"); }
+};
+window.adminDeleteVideo = function(id){ confirmModal("Delete this video?", function(){ DB.videos=DB.videos.filter(function(x){return x.id!==id;}); if(saveStore("ajaramahavidyalaya_videos", DB.videos)){ toast("Deleted."); navigate("#/admin/videos"); } }); };
+
+function renderAdminGalleryList(){
+  var html = '<div class="back-row"><button onclick="navigate(\'#/admin\')">&larr; Dashboard</button></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h2>Manage Photo Gallery</h2><button class="btn sm" onclick="toast(\'Feature requires backend storage. Currently mocked.\')">+ Add Photo</button></div><div class="dev-note">Gallery management requires file upload capabilities which depend on a backend server. This UI currently only lists collections.</div>';
+  DB.gallery.collections.forEach(function(c){
+    var count = DB.gallery.photos.filter(function(p){return p.year===c.id;}).length;
+    html += '<div class="record-card"><div class="top"><div><div class="title">'+esc(c.title)+'</div><div class="meta">'+count+' Photos</div></div></div><div class="record-actions"><button onclick="toast(\'View functionality requires backend.\')">Manage Photos</button></div></div>';
+  });
+  return html;
+}
+
+function renderAdminFacultyList(){
+  var html = '<div class="back-row"><button onclick="navigate(\'#/admin\')">&larr; Dashboard</button></div><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px"><h2>Manage Faculty</h2><button class="btn sm" onclick="window.adminEditFaculty(\'new\')">+ Add Faculty</button></div>';
+  if(DB.faculty.length===0){ html += '<div class="empty-state">No faculty members found.</div>'; }
+  DB.faculty.forEach(function(f){
+    html += '<div class="record-card"><div class="top"><div><div class="title">'+esc(f.name)+'</div><div class="meta">'+esc(f.department)+'</div></div><div class="status-pill '+(f.published?'pub':'draft')+'">'+(f.published?'Published':'Draft')+'</div></div><div class="record-actions"><button onclick="window.adminEditFaculty(\''+f.id+'\')">Edit</button><button class="danger" onclick="window.adminDeleteFaculty(\''+f.id+'\')">Delete</button></div></div>';
+  });
+  return html;
+}
+window.adminEditFaculty = function(id){
+  var isNew = (id==="new");
+  var f = isNew ? {name:"",designation:"",department:"",qualifications:"",photo:"",published:true} : DB.faculty.filter(function(x){return x.id===id;})[0];
+  var fHtml = '<div class="back-row"><button onclick="navigate(\'#/admin/faculty\')">&larr; Back</button></div><h2>'+(isNew?'Add Faculty':'Edit Faculty')+'</h2><div class="card" style="padding:20px;margin-top:20px"><form id="facForm"><div class="field"><label>Full Name</label><input type="text" id="fName" value="'+esc(f.name)+'" required></div><div class="grid grid-2"><div class="field"><label>Designation</label><input type="text" id="fDesig" value="'+esc(f.designation)+'" required></div><div class="field"><label>Department</label><input type="text" id="fDept" value="'+esc(f.department)+'" required></div></div><div class="field"><label>Qualifications</label><input type="text" id="fQual" value="'+esc(f.qualifications)+'"></div><div class="field"><label>Photo URL (Optional)</label><input type="text" id="fImg" value="'+esc(f.photo)+'"></div><div class="toggle-row"><label>Published</label><input type="checkbox" id="fPub" '+(f.published?'checked':'')+'></div></form></div><div class="sticky-save"><button class="btn outline" onclick="navigate(\'#/admin/faculty\')">Cancel</button><button class="btn" onclick="window.adminSaveFaculty(\''+id+'\')">Save Changes</button></div>';
+  document.querySelector('.admin-body').innerHTML = fHtml;
+};
+window.adminSaveFaculty = function(id){
+  var isNew = (id==="new");
+  if(!document.getElementById("fName").value.trim() || !document.getElementById("fDept").value.trim()){ toast("Name and Department are required."); return; }
+  var obj = {
+    id: isNew ? uid('f') : id, name: document.getElementById("fName").value, designation: document.getElementById("fDesig").value,
+    department: document.getElementById("fDept").value, qualifications: document.getElementById("fQual").value,
+    photo: document.getElementById("fImg").value, published: document.getElementById("fPub").checked,
+    order: isNew ? DB.faculty.length+1 : DB.faculty.filter(function(x){return x.id===id;})[0].order
+  };
+  if(isNew) DB.faculty.push(obj);
+  else DB.faculty = DB.faculty.map(function(x){return x.id===id?obj:x;});
+  if(saveStore("ajaramahavidyalaya_faculty", DB.faculty)){ toast("Faculty saved!"); navigate("#/admin/faculty"); }
+};
+window.adminDeleteFaculty = function(id){ confirmModal("Delete this faculty profile?", function(){ DB.faculty=DB.faculty.filter(function(x){return x.id!==id;}); if(saveStore("ajaramahavidyalaya_faculty", DB.faculty)){ toast("Deleted."); navigate("#/admin/faculty"); } }); };
+
+// Initial Render
+renderRoute();
 })();
 </script>
 </body>
 </html>
+
